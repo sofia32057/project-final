@@ -3,6 +3,7 @@ import cors from "cors";
 import mongoose, { model } from "mongoose";
 import expressListEndpoints from "express-list-endpoints";
 import bcrypt from "bcrypt";
+import guestData from "./guests.json";
 
 const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/our-wedding";
 mongoose.connect(mongoUrl);
@@ -72,6 +73,19 @@ const Guest = model("Guest", {
   // },
 });
 
+// Seed database with guestlist
+if (process.env.RESET_DB) {
+  console.log("Resetting the database!");
+  const seedDatabase = async () => {
+    await Guest.deleteMany({});
+
+    guestData.forEach(async guest => {
+      new Guest(guest).save();
+    });
+  };
+  seedDatabase();
+}
+
 // ROUTES
 app.route("/").get(async (req, res) => {
   const endpoints = expressListEndpoints(app);
@@ -87,7 +101,7 @@ app
   .get(async (req, res) => {
     const guests = await Guest.find(
       {},
-      "firstname lastname relation willAttend"
+      "firstname lastname relation willAttend plusOne.name"
     );
     res.send(guests);
   })
@@ -123,6 +137,21 @@ app
       res.status(201).send(`Created guest ID ${newGuest._id}`);
     } catch (err) {
       res.status(400).json({ message: "Post request failed", error: err });
+    }
+  });
+
+app
+  .route("/guests/:guestId")
+  // Find specific guest
+  .get(async (req, res) => {
+    try {
+      const guest = await Guest.findById(
+        req.params.guestId,
+        "_id token firstname lastname relation willAttend plusOne.name"
+      ).exec();
+      res.status(201).json(guest);
+    } catch (err) {
+      res.status(400).json({ message: "Used not found", error: err });
     }
   });
 

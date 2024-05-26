@@ -1,0 +1,904 @@
+[
+  {
+    "firstname": "John",
+    "lastname": "Smith",
+    "email": "john.smith@example.com",
+    "password": "password123",
+    "willAttend": true,
+    "plusOne": {
+      "isAllowed": true,
+      "name": "Jane Smith",
+      "foodChoice": "Chicken"
+    },
+    "speech": {
+      "isAllowed": true,
+      "willMakeSpeech": true
+    },
+    "foodChoice": "Beef",
+    "relation": "Groom's father"
+  },
+  {
+    "firstname": "Jane",
+    "lastname": "Smith",
+    "email": "jane.smith@example.com",
+    "password": "password123",
+    "willAttend": true,
+    "plusOne": {
+      "isAllowed": false,
+      "name": "",
+      "foodChoice": ""
+    },
+    "speech": {
+      "isAllowed": false,
+      "willMakeSpeech": false
+    },
+    "foodChoice": "Chicken",
+    "relation": "Groom's mother"
+  },
+  {
+    "firstname": "Michael",
+    "lastname": "Johnson",
+    "email": "michael.johnson@example.com",
+    "password": "password123",
+    "willAttend": true,
+    "plusOne": {
+      "isAllowed": false,
+      "name": "",
+      "foodChoice": ""
+    },
+    "speech": {
+      "isAllowed": false,
+      "willMakeSpeech": false
+    },
+    "foodChoice": "Vegetarian",
+    "relation": "Groom's friend"
+  },
+  {
+    "firstname": "Sarah",
+    "lastname": "Johnson",
+    "email": "sarah.johnson@example.com",
+    "password": "password123",
+    "willAttend": true,
+    "plusOne": {
+      "isAllowed": false,
+      "name": "",
+      "foodChoice": ""
+    },
+    "speech": {
+      "isAllowed": true,
+      "willMakeSpeech": true
+    },
+    "foodChoice": "Fish",
+    "relation": "Bride's mother"
+  },
+  {
+    "firstname": "Robert",
+    "lastname": "Wilson",
+    "email": "robert.wilson@example.com",
+    "password": "password123",
+    "willAttend": true,
+    "plusOne": {
+      "isAllowed": true,
+      "name": "Elizabeth Brown",
+      "foodChoice": "Chicken"
+    },
+    "speech": {
+      "isAllowed": true,
+      "willMakeSpeech": true
+    },
+    "foodChoice": "Beef",
+    "relation": "Bride's father"
+  },
+  {
+    "firstname": "Elizabeth",
+    "lastname": "Brown",
+    "email": "elizabeth.brown@example.com",
+    "password": "password123",
+    "willAttend": true,
+    "plusOne": {
+      "isAllowed": false,
+      "name": "",
+      "foodChoice": ""
+    },
+    "speech": {
+      "isAllowed": false,
+      "willMakeSpeech": false
+    },
+    "foodChoice": "Vegetarian",
+    "relation": "Robert's girlfriend"
+  },
+  {
+    "firstname": "James",
+    "lastname": "Anderson",
+    "email": "james.anderson@example.com",
+    "password": "password123",
+    "willAttend": true,
+    "plusOne": {
+      "isAllowed": true,
+      "name": "Mary Anderson",
+      "foodChoice": "Fish"
+    },
+    "speech": {
+      "isAllowed": false,
+      "willMakeSpeech": false
+    },
+    "foodChoice": "Chicken",
+    "relation": "Groom's friend"
+  },
+  {
+    "firstname": "Mary",
+    "lastname": "Anderson",
+    "email": "mary.anderson@example.com",
+    "password": "password123",
+    "willAttend": true,
+    "plusOne": {
+      "isAllowed": false,
+      "name": "",
+      "foodChoice": ""
+    },
+    "speech": {
+      "isAllowed": true,
+      "willMakeSpeech": true
+    },
+    "foodChoice": "Vegetarian",
+    "relation": "James's wife"
+  },
+  {
+    "firstname": "Joseph",
+    "lastname": "Thomas",
+    "email": "joseph.thomas@example.com",
+    "password": "password123",
+    "willAttend": true,
+    "plusOne": {
+      "isAllowed": true,
+      "name": "Patricia Thomas",
+      "foodChoice": "Beef"
+    },
+    "speech": {
+      "isAllowed": false,
+      "willMakeSpeech": false
+    },
+    "foodChoice": "Fish",
+    "relation": "Groom's cousin"
+  },
+  {
+    "firstname": "Patricia",
+    "lastname": "Thomas",
+    "email": "patricia.thomas@example.com",
+    "password": "password123",
+    "willAttend": true,
+    "plusOne": {
+      "isAllowed": false,
+      "name": "",
+      "foodChoice": ""
+    },
+    "speech": {
+      "isAllowed": true,
+      "willMakeSpeech": true
+    },
+    "foodChoice": "Vegetarian",
+    "relation": "Joseph's wife"
+  },
+  {
+    "firstname": "Christopher",
+    "lastname": "Harris",
+    "email": "christopher.harris@example.com",
+    "password": "password123",
+    "willAttend": true,
+    "plusOne": {
+      "isAllowed": true,
+      "name": "Laura Harris",
+      "foodChoice": "Chicken"
+    },
+    "speech": {
+      "isAllowed": false,
+      "willMakeSpeech": false
+    },
+    "foodChoice": "Beef",
+    "relation": "Bride's cousin"
+  },
+  {
+    "firstname": "Laura",
+    "lastname": "Harris",
+    "email": "laura.harris@example.com",
+    "password": "password123",
+    "willAttend": true,
+    "plusOne": {
+      "isAllowed": false,
+      "name": "",
+      "foodChoice": ""
+    },
+    "speech": {
+      "isAllowed": true,
+      "willMakeSpeech": true
+    },
+    "foodChoice": "Vegetarian",
+    "relation": "Christopher's wife"
+  },
+  {
+    "firstname": "Daniel",
+    "lastname": "Martin",
+    "email": "daniel.martin@example.com",
+    "password": "password123",
+    "willAttend": true,
+    "plusOne": {
+      "isAllowed": true,
+      "name": "Jennifer White",
+      "foodChoice": "Fish"
+    },
+    "speech": {
+      "isAllowed": false,
+      "willMakeSpeech": false
+    },
+    "foodChoice": "Chicken",
+    "relation": "Groom's coworker"
+  },
+  {
+    "firstname": "Jennifer",
+    "lastname": "White",
+    "email": "jennifer.white@example.com",
+    "password": "password123",
+    "willAttend": true,
+    "plusOne": {
+      "isAllowed": false,
+      "name": "",
+      "foodChoice": ""
+    },
+    "speech": {
+      "isAllowed": true,
+      "willMakeSpeech": true
+    },
+    "foodChoice": "Vegetarian",
+    "relation": "Daniel's girlfriend"
+  },
+  {
+    "firstname": "Anthony",
+    "lastname": "Martinez",
+    "email": "anthony.martinez@example.com",
+    "password": "password123",
+    "willAttend": true,
+    "plusOne": {
+      "isAllowed": true,
+      "name": "Karen Martinez",
+      "foodChoice": "Beef"
+    },
+    "speech": {
+      "isAllowed": true,
+      "willMakeSpeech": true
+    },
+    "foodChoice": "Fish",
+    "relation": "Bride's childhood friend"
+  },
+  {
+    "firstname": "Karen",
+    "lastname": "Martinez",
+    "email": "karen.martinez@example.com",
+    "password": "password123",
+    "willAttend": true,
+    "plusOne": {
+      "isAllowed": false,
+      "name": "",
+      "foodChoice": ""
+    },
+    "speech": {
+      "isAllowed": false,
+      "willMakeSpeech": false
+    },
+    "foodChoice": "Vegetarian",
+    "relation": "Anthony's fiancée"
+  },
+  {
+    "firstname": "Steven",
+    "lastname": "Rodriguez",
+    "email": "steven.rodriguez@example.com",
+    "password": "password123",
+    "willAttend": true,
+    "plusOne": {
+      "isAllowed": true,
+      "name": "Nancy Clark",
+      "foodChoice": "Chicken"
+    },
+    "speech": {
+      "isAllowed": false,
+      "willMakeSpeech": false
+    },
+    "foodChoice": "Beef",
+    "relation": "Bride's friend"
+  },
+  {
+    "firstname": "Nancy",
+    "lastname": "Clark",
+    "email": "nancy.clark@example.com",
+    "password": "password123",
+    "willAttend": true,
+    "plusOne": {
+      "isAllowed": false,
+      "name": "",
+      "foodChoice": ""
+    },
+    "speech": {
+      "isAllowed": true,
+      "willMakeSpeech": true
+    },
+    "foodChoice": "Vegetarian",
+    "relation": "Steven's wife"
+  },
+  {
+    "firstname": "Paul",
+    "lastname": "Lewis",
+    "email": "paul.lewis@example.com",
+    "password": "password123",
+    "willAttend": true,
+    "plusOne": {
+      "isAllowed": true,
+      "name": "Angela Scott",
+      "foodChoice": "Fish"
+    },
+    "speech": {
+      "isAllowed": false,
+      "willMakeSpeech": false
+    },
+    "foodChoice": "Chicken",
+    "relation": "Groom's college friend"
+  },
+  {
+    "firstname": "Angela",
+    "lastname": "Scott",
+    "email": "angela.scott@example.com",
+    "password": "password123",
+    "willAttend": true,
+    "plusOne": {
+      "isAllowed": false,
+      "name": "",
+      "foodChoice": ""
+    },
+    "speech": {
+      "isAllowed": true,
+      "willMakeSpeech": true
+    },
+    "foodChoice": "Vegetarian",
+    "relation": "Paul's girlfriend"
+  },
+  {
+    "firstname": "Joshua",
+    "lastname": "Allen",
+    "email": "joshua.allen@example.com",
+    "password": "password123",
+    "willAttend": true,
+    "plusOne": {
+      "isAllowed": true,
+      "name": "Jessica Adams",
+      "foodChoice": "Beef"
+    },
+    "speech": {
+      "isAllowed": false,
+      "willMakeSpeech": false
+    },
+    "foodChoice": "Fish",
+    "relation": "Groom's cousin"
+  },
+  {
+    "firstname": "Jessica",
+    "lastname": "Adams",
+    "email": "jessica.adams@example.com",
+    "password": "password123",
+    "willAttend": true,
+    "plusOne": {
+      "isAllowed": false,
+      "name": "",
+      "foodChoice": ""
+    },
+    "speech": {
+      "isAllowed": true,
+      "willMakeSpeech": true
+    },
+    "foodChoice": "Vegetarian",
+    "relation": "Joshua's wife"
+  },
+  {
+    "firstname": "Kevin",
+    "lastname": "Young",
+    "email": "kevin.young@example.com",
+    "password": "password123",
+    "willAttend": true,
+    "plusOne": {
+      "isAllowed": true,
+      "name": "Megan Young",
+      "foodChoice": "Chicken"
+    },
+    "speech": {
+      "isAllowed": false,
+      "willMakeSpeech": false
+    },
+    "foodChoice": "Beef",
+    "relation": "Bride's brother"
+  },
+  {
+    "firstname": "Megan",
+    "lastname": "Young",
+    "email": "megan.young@example.com",
+    "password": "password123",
+    "willAttend": true,
+    "plusOne": {
+      "isAllowed": false,
+      "name": "",
+      "foodChoice": ""
+    },
+    "speech": {
+      "isAllowed": true,
+      "willMakeSpeech": true
+    },
+    "foodChoice": "Vegetarian",
+    "relation": "Kevin's wife"
+  },
+  {
+    "firstname": "Jason",
+    "lastname": "Wright",
+    "email": "jason.wright@example.com",
+    "password": "password123",
+    "willAttend": true,
+    "plusOne": {
+      "isAllowed": true,
+      "name": "Samantha Hill",
+      "foodChoice": "Fish"
+    },
+    "speech": {
+      "isAllowed": false,
+      "willMakeSpeech": false
+    },
+    "foodChoice": "Chicken",
+    "relation": "Groom's colleague"
+  },
+  {
+    "firstname": "Samantha",
+    "lastname": "Hill",
+    "email": "samantha.hill@example.com",
+    "password": "password123",
+    "willAttend": true,
+    "plusOne": {
+      "isAllowed": false,
+      "name": "",
+      "foodChoice": ""
+    },
+    "speech": {
+      "isAllowed": true,
+      "willMakeSpeech": true
+    },
+    "foodChoice": "Vegetarian",
+    "relation": "Jason's girlfriend"
+  },
+  {
+    "firstname": "Timothy",
+    "lastname": "Lopez",
+    "email": "timothy.lopez@example.com",
+    "password": "password123",
+    "willAttend": true,
+    "plusOne": {
+      "isAllowed": true,
+      "name": "Rebecca Morgan",
+      "foodChoice": "Beef"
+    },
+    "speech": {
+      "isAllowed": false,
+      "willMakeSpeech": false
+    },
+    "foodChoice": "Fish",
+    "relation": "Bride's friend"
+  },
+  {
+    "firstname": "Rebecca",
+    "lastname": "Morgan",
+    "email": "rebecca.morgan@example.com",
+    "password": "password123",
+    "willAttend": true,
+    "plusOne": {
+      "isAllowed": false,
+      "name": "",
+      "foodChoice": ""
+    },
+    "speech": {
+      "isAllowed": true,
+      "willMakeSpeech": true
+    },
+    "foodChoice": "Vegetarian",
+    "relation": "Timothy's wife"
+  },
+  {
+    "firstname": "Justin",
+    "lastname": "Green",
+    "email": "justin.green@example.com",
+    "password": "password123",
+    "willAttend": true,
+    "plusOne": {
+      "isAllowed": true,
+      "name": "Rachel Moore",
+      "foodChoice": "Chicken"
+    },
+    "speech": {
+      "isAllowed": false,
+      "willMakeSpeech": false
+    },
+    "foodChoice": "Beef",
+    "relation": "Groom's friend"
+  },
+  {
+    "firstname": "Rachel",
+    "lastname": "Moore",
+    "email": "rachel.moore@example.com",
+    "password": "password123",
+    "willAttend": true,
+    "plusOne": {
+      "isAllowed": false,
+      "name": "",
+      "foodChoice": ""
+    },
+    "speech": {
+      "isAllowed": true,
+      "willMakeSpeech": true
+    },
+    "foodChoice": "Vegetarian",
+    "relation": "Justin's girlfriend"
+  },
+  {
+    "firstname": "Brandon",
+    "lastname": "Adams",
+    "email": "brandon.adams@example.com",
+    "password": "password123",
+    "willAttend": true,
+    "plusOne": {
+      "isAllowed": true,
+      "name": "Olivia Edwards",
+      "foodChoice": "Fish"
+    },
+    "speech": {
+      "isAllowed": false,
+      "willMakeSpeech": false
+    },
+    "foodChoice": "Chicken",
+    "relation": "Groom's cousin"
+  },
+  {
+    "firstname": "Olivia",
+    "lastname": "Edwards",
+    "email": "olivia.edwards@example.com",
+    "password": "password123",
+    "willAttend": true,
+    "plusOne": {
+      "isAllowed": false,
+      "name": "",
+      "foodChoice": ""
+    },
+    "speech": {
+      "isAllowed": true,
+      "willMakeSpeech": true
+    },
+    "foodChoice": "Vegetarian",
+    "relation": "Brandon's wife"
+  },
+  {
+    "firstname": "George",
+    "lastname": "Patterson",
+    "email": "george.patterson@example.com",
+    "password": "password123",
+    "willAttend": true,
+    "plusOne": {
+      "isAllowed": true,
+      "name": "Carol Patterson",
+      "foodChoice": "Beef"
+    },
+    "speech": {
+      "isAllowed": false,
+      "willMakeSpeech": false
+    },
+    "foodChoice": "Fish",
+    "relation": "Bride's friend"
+  },
+  {
+    "firstname": "Carol",
+    "lastname": "Patterson",
+    "email": "carol.patterson@example.com",
+    "password": "password123",
+    "willAttend": true,
+    "plusOne": {
+      "isAllowed": false,
+      "name": "",
+      "foodChoice": ""
+    },
+    "speech": {
+      "isAllowed": true,
+      "willMakeSpeech": true
+    },
+    "foodChoice": "Vegetarian",
+    "relation": "George's wife"
+  },
+  {
+    "firstname": "Susan",
+    "lastname": "Watson",
+    "email": "susan.watson@example.com",
+    "password": "password123",
+    "willAttend": true,
+    "plusOne": {
+      "isAllowed": true,
+      "name": "Lisa Watson",
+      "foodChoice": "Chicken"
+    },
+    "speech": {
+      "isAllowed": false,
+      "willMakeSpeech": false
+    },
+    "foodChoice": "Beef",
+    "relation": "Bride's sister"
+  },
+  {
+    "firstname": "Lisa",
+    "lastname": "Watson",
+    "email": "lisa.watson@example.com",
+    "password": "password123",
+    "willAttend": true
+
+,
+    "plusOne": {
+      "isAllowed": false,
+      "name": "",
+      "foodChoice": ""
+    },
+    "speech": {
+      "isAllowed": true,
+      "willMakeSpeech": true
+    },
+    "foodChoice": "Vegetarian",
+    "relation": "Susan's wife"
+  },
+  {
+    "firstname": "David",
+    "lastname": "Brown",
+    "email": "david.brown@example.com",
+    "password": "password123",
+    "willAttend": true,
+    "plusOne": {
+      "isAllowed": false,
+      "name": "",
+      "foodChoice": ""
+    },
+    "speech": {
+      "isAllowed": false,
+      "willMakeSpeech": false
+    },
+    "foodChoice": "Fish",
+    "relation": "College friend of the groom"
+  },
+  {
+    "firstname": "Emily",
+    "lastname": "Davis",
+    "email": "emily.davis@example.com",
+    "password": "password123",
+    "willAttend": true,
+    "plusOne": {
+      "isAllowed": false,
+      "name": "",
+      "foodChoice": ""
+    },
+    "speech": {
+      "isAllowed": false,
+      "willMakeSpeech": false
+    },
+    "foodChoice": "Vegetarian",
+    "relation": "Bride's cousin"
+  },
+  {
+    "firstname": "William",
+    "lastname": "Moore",
+    "email": "william.moore@example.com",
+    "password": "password123",
+    "willAttend": true,
+    "plusOne": {
+      "isAllowed": false,
+      "name": "",
+      "foodChoice": ""
+    },
+    "speech": {
+      "isAllowed": false,
+      "willMakeSpeech": false
+    },
+    "foodChoice": "Chicken",
+    "relation": "Groom's coworker"
+  },
+  {
+    "firstname": "Linda",
+    "lastname": "Taylor",
+    "email": "linda.taylor@example.com",
+    "password": "password123",
+    "willAttend": true,
+    "plusOne": {
+      "isAllowed": false,
+      "name": "",
+      "foodChoice": ""
+    },
+    "speech": {
+      "isAllowed": false,
+      "willMakeSpeech": false
+    },
+    "foodChoice": "Beef",
+    "relation": "Bride's neighbor"
+  },
+  {
+    "firstname": "Charles",
+    "lastname": "Jackson",
+    "email": "charles.jackson@example.com",
+    "password": "password123",
+    "willAttend": true,
+    "plusOne": {
+      "isAllowed": false,
+      "name": "",
+      "foodChoice": ""
+    },
+    "speech": {
+      "isAllowed": false,
+      "willMakeSpeech": false
+    },
+    "foodChoice": "Fish",
+    "relation": "Groom's uncle"
+  },
+  {
+    "firstname": "Barbara",
+    "lastname": "White",
+    "email": "barbara.white@example.com",
+    "password": "password123",
+    "willAttend": true,
+    "plusOne": {
+      "isAllowed": false,
+      "name": "",
+      "foodChoice": ""
+    },
+    "speech": {
+      "isAllowed": false,
+      "willMakeSpeech": false
+    },
+    "foodChoice": "Vegetarian",
+    "relation": "Bride's childhood friend"
+  },
+  {
+    "firstname": "Matthew",
+    "lastname": "Thompson",
+    "email": "matthew.thompson@example.com",
+    "password": "password123",
+    "willAttend": true,
+    "plusOne": {
+      "isAllowed": false,
+      "name": "",
+      "foodChoice": ""
+    },
+    "speech": {
+      "isAllowed": false,
+      "willMakeSpeech": false
+    },
+    "foodChoice": "Chicken",
+    "relation": "Groom's high school friend"
+  },
+  {
+    "firstname": "Susan",
+    "lastname": "Garcia",
+    "email": "susan.garcia@example.com",
+    "password": "password123",
+    "willAttend": true,
+    "plusOne": {
+      "isAllowed": false,
+      "name": "",
+      "foodChoice": ""
+    },
+    "speech": {
+      "isAllowed": false,
+      "willMakeSpeech": false
+    },
+    "foodChoice": "Beef",
+    "relation": "Bride's college roommate"
+  },
+  {
+    "firstname": "Mark",
+    "lastname": "Robinson",
+    "email": "mark.robinson@example.com",
+    "password": "password123",
+    "willAttend": true,
+    "plusOne": {
+      "isAllowed": false,
+      "name": "",
+      "foodChoice": ""
+    },
+    "speech": {
+      "isAllowed": false,
+      "willMakeSpeech": false
+    },
+    "foodChoice": "Fish",
+    "relation": "Bride's colleague"
+  },
+  {
+    "firstname": "Lisa",
+    "lastname": "Clark",
+    "email": "lisa.clark@example.com",
+    "password": "password123",
+    "willAttend": true,
+    "plusOne": {
+      "isAllowed": false,
+      "name": "",
+      "foodChoice": ""
+    },
+    "speech": {
+      "isAllowed": false,
+      "willMakeSpeech": false
+    },
+    "foodChoice": "Vegetarian",
+    "relation": "Groom's cousin"
+  },
+  {
+    "firstname": "Andrew",
+    "lastname": "Walker",
+    "email": "andrew.walker@example.com",
+    "password": "password123",
+    "willAttend": true,
+    "plusOne": {
+      "isAllowed": false,
+      "name": "",
+      "foodChoice": ""
+    },
+    "speech": {
+      "isAllowed": false,
+      "willMakeSpeech": false
+    },
+    "foodChoice": "Chicken",
+    "relation": "Groom's gym buddy"
+  },
+  {
+    "firstname": "Michelle",
+    "lastname": "Hall",
+    "email": "michelle.hall@example.com",
+    "password": "password123",
+    "willAttend": true,
+    "plusOne": {
+      "isAllowed": false,
+      "name": "",
+      "foodChoice": ""
+    },
+    "speech": {
+      "isAllowed": false,
+      "willMakeSpeech": false
+    },
+    "foodChoice": "Beef",
+    "relation": "Bride's colleague"
+  },
+  {
+    "firstname": "Brian",
+    "lastname": "Hernandez",
+    "email": "brian.hernandez@example.com",
+    "password": "password123",
+    "willAttend": true,
+    "plusOne": {
+      "isAllowed": false,
+      "name": "",
+      "foodChoice": ""
+    },
+    "speech": {
+      "isAllowed": false,
+      "willMakeSpeech": false
+    },
+    "foodChoice": "Fish",
+    "relation": "Groom's friend"
+  },
+  {
+    "firstname": "Donna",
+    "lastname": "King",
+    "email": "donna.king@example.com",
+    "password": "password123",
+    "willAttend": true,
+    "plusOne": {
+      "isAllowed": false,
+      "name": "",
+      "foodChoice": ""
+    },
+    "speech": {
+      "isAllowed": false,
+      "willMakeSpeech": false
+    },
+    "foodChoice": "Vegetarian",
+    "relation": "Bride's aunt"
+  }
+]

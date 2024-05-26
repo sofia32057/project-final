@@ -13,17 +13,20 @@ This project includes the packages and babel setup for an express server, and is
 
 ### /guests
 
-Example of guest
+- .get: get all guests
+- .post: post new guest
+
+#### Example of guest
 
 ```
   {
-    "firstname": "Test2",
-    "lastname": "Testsson",
-    "email": "name@domain.io",
+    "firstname": "Judy",
+    "lastname": "Dench",
+    "email": "judy@worddomination.io",
     "password": "test",
     "plusOne": {
       "isAllowed": true,
-      "name": "Plus One",
+      "name": "Emma Thompson",
       "foodChoice": "Fish"
     },
     "speech": {
@@ -35,3 +38,7 @@ Example of guest
     "willAttend": true
   }
 ```
+
+### /guests/:guestId
+
+- .get: get guest by id
