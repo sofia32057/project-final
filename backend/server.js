@@ -1,16 +1,13 @@
 import express from "express";
 import cors from "cors";
-import mongoose from 'mongoose'
+import mongoose, { model } from "mongoose";
+import expressListEndpoints from "express-list-endpoints";
+import bcrypt from "bcrypt";
 
-const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/flowershop"
-mongoose.connect(mongoUrl)
-mongoose.Promise = Promise
+const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/our-wedding";
+mongoose.connect(mongoUrl);
+mongoose.Promise = Promise;
 
-
-
-// Defines the port the app will run on. Defaults to 8080, but can be overridden
-// when starting the server. Example command to overwrite PORT env variable value:
-// PORT=9000 npm start
 const port = process.env.PORT || 8080;
 const app = express();
 
@@ -19,11 +16,13 @@ app.use(cors());
 app.use(express.json());
 
 // Start defining your routes here
-// http://localhost:8080/
-app.get("/", (req, res) => {
-  res.send("Hello Technigo!");
+app.route("/").get(async (req, res) => {
+  const endpoints = expressListEndpoints(app);
+  res.json({
+    message: "Hello Technigo, welcome to our wedding site API",
+    endpoints: endpoints,
+  });
 });
-
 
 // Start the server
 app.listen(port, () => {
