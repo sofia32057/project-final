@@ -1,13 +1,41 @@
-# Final Project
+# Final Project - Our wedding site
 
-Replace this readme with your own information about your project.
+## Project Description
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+- What your application does
+- Why you used the technologies you used
+- Some of the challenges you faced and features you hope to implement in the future
+
+## How to Install and Run the Project
+
+Provide a step-by-step description of how to get the development environment set and running
+
+## How to Use the Project
+
+You can make use of visual aids by including materials like screenshots to show examples of the running project and also the structure and design principles used in your project.
+
+Also, if your project requires authentication like passwords or usernames, this is a good section to include the credentials.
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+## MoSCoW
 
-## View it live
+Here you can describe the stretch goal(s) and possible features you would like to add in future versions
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+### Must have
+
+### Should have
+
+### Could have
+
+### Wont have
+
+## Collaborators & Credits
+
+If you worked on the project as a team or an organization, list your collaborators/team members. You should also include links to their GitHub profiles and social media.
+
+Big thanks to [Citronsskal](https://github.com/Citronskal) and [Trista1987](https://github.com/trista1987) for helping us with the idea and pitch.
+
+## See it live
+
+Deploy your app with Netlify (don’t forget to take care of the routes configuration by adding a .toml file), and paste the link in your README
