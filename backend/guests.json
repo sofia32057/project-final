@@ -1,5 +1,23 @@
 [
   {
+    "firstname": "Test",
+    "lastname": "Testsson",
+    "email": "test@example.com",
+    "password": "testPassword",
+    "willAttend": false,
+    "plusOne": {
+      "isAllowed": true,
+      "name": "",
+      "foodChoice": ""
+    },
+    "speech": {
+      "isAllowed": true,
+      "willMakeSpeech": false
+    },
+    "foodChoice": "",
+    "relation": "Groom's father"
+  },
+  {
     "firstname": "John",
     "lastname": "Smith",
     "email": "john.smith@example.com",

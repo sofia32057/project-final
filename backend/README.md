@@ -11,6 +11,11 @@ This project includes the packages and babel setup for an express server, and is
 
 ### /
 
+### /login
+
+Login to app by using email and password.
+Test user: test@example.com | testPassword
+
 ### /guests
 
 - .get: get all guests

@@ -33,6 +33,7 @@ const Guest = model("Guest", {
   email: {
     type: String,
     required: true,
+    unique: true,
   },
   password: {
     type: String,
@@ -73,14 +74,36 @@ const Guest = model("Guest", {
   // },
 });
 
-// Seed database with guestlist
+// Seed database with guestlist - temporary solution
 if (process.env.RESET_DB) {
   console.log("Resetting the database!");
   const seedDatabase = async () => {
     await Guest.deleteMany({});
 
     guestData.forEach(async guest => {
-      new Guest(guest).save();
+      const {
+        firstname,
+        lastname,
+        email,
+        password,
+        plusOne,
+        speech,
+        foodChoice,
+        relation,
+        willAttend,
+      } = guest;
+
+      new Guest({
+        firstname,
+        lastname,
+        email,
+        password: bcrypt.hashSync(password, 10),
+        plusOne,
+        speech,
+        foodChoice,
+        relation,
+        willAttend,
+      }).save();
     });
   };
   seedDatabase();
@@ -154,6 +177,28 @@ app
       res.status(400).json({ message: "Used not found", error: err });
     }
   });
+
+//Login
+app.route("/login").post(async (req, res) => {
+  // Find user by name
+  const guest = await Guest.findOne({ email: req.body.email }).exec();
+  console.log(guest);
+
+  // Check if password is correct
+  if (guest && bcrypt.compareSync(req.body.password, guest.password)) {
+    // a. User name and password match
+    res.status(201).json({
+      message: "User logged in successfully",
+      accessToken: guest.accessToken,
+    });
+  } else if (guest) {
+    // b. user exists but password did not match
+    res.status(401).json({ message: "Password did not match" });
+  } else {
+    // c. user does not exists
+    res.status(400).json({ message: "guest name invalid" });
+  }
+});
 
 // Start the server
 app.listen(port, () => {
