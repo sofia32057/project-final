@@ -2,10 +2,14 @@ import { NavLink, Link } from "react-router-dom";
 
 export const Header = () => {
   return (
-    <header>
+    <header className="relative z-40">
       <nav>
-        <Link to="/">Home</Link>
-        <NavLink to="/my-attendance">My Attendance</NavLink>
+        <NavLink to={"/"}>Home</NavLink>
+        {/* Links only for DEV nav */}
+        <NavLink to={"/login"}>Login</NavLink>
+        <NavLink to={"/confirmation"}>Confirmation</NavLink>
+        {/*  */}
+        <NavLink to={"/my-attendance"}>My Attendance</NavLink>
         <NavLink to="/rsvp">RSVP</NavLink>
       </nav>
     </header>
