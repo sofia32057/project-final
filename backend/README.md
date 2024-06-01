@@ -11,6 +11,13 @@ This project includes the packages and babel setup for an express server, and is
 
 ### /
 
+Se all REST API endpoints
+
+### /login
+
+Login to app by using email and password.
+Test user: test@example.com | testPassword
+
 ### /guests
 
 - .get: get all guests
@@ -42,3 +49,4 @@ This project includes the packages and babel setup for an express server, and is
 ### /guests/:guestId
 
 - .get: get guest by id
+- .patch: update guest, primarily for RSVP

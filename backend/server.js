@@ -17,6 +17,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// Mongoose model
 const Guest = model("Guest", {
   accessToken: {
     type: String,
@@ -33,6 +34,7 @@ const Guest = model("Guest", {
   email: {
     type: String,
     required: true,
+    unique: true,
   },
   password: {
     type: String,
@@ -73,18 +75,42 @@ const Guest = model("Guest", {
   // },
 });
 
-// Seed database with guestlist
+// Seed database with guestlist - temporary solution
 if (process.env.RESET_DB) {
   console.log("Resetting the database!");
   const seedDatabase = async () => {
     await Guest.deleteMany({});
 
     guestData.forEach(async guest => {
-      new Guest(guest).save();
+      const {
+        firstname,
+        lastname,
+        email,
+        password,
+        plusOne,
+        speech,
+        foodChoice,
+        relation,
+        willAttend,
+      } = guest;
+
+      new Guest({
+        firstname,
+        lastname,
+        email,
+        password: bcrypt.hashSync(password, 10),
+        plusOne,
+        speech,
+        foodChoice,
+        relation,
+        willAttend,
+      }).save();
     });
   };
   seedDatabase();
 }
+
+// Auth
 
 // ROUTES
 app.route("/").get(async (req, res) => {
@@ -95,13 +121,36 @@ app.route("/").get(async (req, res) => {
   });
 });
 
+//Login
+app.route("/login").post(async (req, res) => {
+  // Find user by name
+  const guest = await Guest.findOne({ email: req.body.email }).exec();
+  console.log(guest);
+
+  // Check if password is correct
+  if (guest && bcrypt.compareSync(req.body.password, guest.password)) {
+    // a. User name and password match
+    res.status(201).json({
+      message: "User logged in successfully",
+      accessToken: guest.accessToken,
+    });
+  } else if (guest) {
+    // b. user exists but password did not match
+    res.status(401).json({ message: "Password did not match" });
+  } else {
+    // c. user does not exists
+    res.status(400).json({ message: "guest name invalid" });
+  }
+});
+
+// Guests
 app
   .route("/guests")
-  // Get all guests (specific fields)
+  // Get all guests (specific fields) --- NOT SECURE! Do not share personal info
   .get(async (req, res) => {
     const guests = await Guest.find(
       {},
-      "firstname lastname relation willAttend plusOne.name"
+      "firstname lastname relation willAttend plusOne speech"
     );
     res.send(guests);
   })
@@ -142,16 +191,40 @@ app
 
 app
   .route("/guests/:guestId")
-  // Find specific guest
+  // Find and return specific guest
   .get(async (req, res) => {
     try {
       const guest = await Guest.findById(
         req.params.guestId,
-        "_id token firstname lastname relation willAttend plusOne.name"
+        "_id firstname lastname relation willAttend plusOne.name"
       ).exec();
       res.status(201).json(guest);
     } catch (err) {
-      res.status(400).json({ message: "Used not found", error: err });
+      res.status(400).json({ message: "User not found", error: err });
+    }
+  })
+  // Find and update  guest
+  .patch(async (req, res) => {
+    try {
+      const guest = await Guest.findById(req.params.guestId).exec();
+
+      // Update properties
+      guest.willAttend = req.body.willAttend;
+      guest.foodChoice = req.body.foodChoice;
+      if (guest.plusOne.isAllowed) {
+        guest.plusOne.name = req.body.plusOne.name;
+        guest.plusOne.foodChoice = req.body.plusOne.foodChoice;
+      }
+      if (guest.speech.isAllowed) {
+        guest.willMakeSpeech = req.body.willMakeSpeech;
+      }
+
+      res
+        .status(201)
+        // .json(guest);
+        .json({ message: `Updated guest ID ${guest._id} successfully` });
+    } catch (err) {
+      res.status(400).json({ message: "User not found", error: err });
     }
   });
 
