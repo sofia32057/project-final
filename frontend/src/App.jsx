@@ -1,8 +1,14 @@
-export const App = () => {
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Header } from "./sections/Header";
+import { NotFound } from "./status/NotFound";
 
+export const App = () => {
   return (
     <>
-      <h1>Welcome to Final Project!</h1>
+      <BrowserRouter>
+        <Header />
+        <h1>Wedding Invitation</h1>
+      </BrowserRouter>
     </>
   );
 };
