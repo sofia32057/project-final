@@ -219,6 +219,8 @@ app
         guest.willMakeSpeech = req.body.willMakeSpeech;
       }
 
+      guest.save();
+
       res
         .status(201)
         // .json(guest);
