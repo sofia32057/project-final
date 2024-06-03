@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useStore } from "../../stores/useStore";
 
 export const LoginForm = () => {
   const [userInput, setUserInput] = useState({
     email: "",
     password: "",
   });
-  const [token, setToken] = useState();
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const { setToken, setIsLoggedIn } = useStore();
 
   const API_KEY = import.meta.env.API_KEY;
   const API_URL = "http://localhost:8080";
