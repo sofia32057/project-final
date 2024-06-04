@@ -1,3 +1,85 @@
 export const Countdown = () => {
-  return <div>Countdown</div>;
+  let dest = new Date("apr 25, 2024 10:00:00").getTime();
+  let x = setInterval(function () {
+    let now = new Date().getTime();
+    let diff = dest - now;
+
+    // Check if the countdown has reached zero or negative
+    if (diff <= 0) {
+      clearInterval(x); // Stop the countdown
+      return; // Exit the function
+    }
+
+    let days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    let hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    let minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    let seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+    if (days < 10) {
+      days = `0${days}`;
+    }
+    if (hours < 10) {
+      hours = `0${hours}`;
+    }
+    if (minutes < 10) {
+      minutes = `0${minutes}`;
+    }
+    if (seconds < 10) {
+      seconds = `0${seconds}`;
+    }
+
+    // Get elements by class name
+    let countdownElements =
+      document.getElementsByClassName("countdown-element");
+
+    // Loop through the elements and update their content
+    for (let i = 0; i < countdownElements.length; i++) {
+      let className = countdownElements[i].classList[1]; // Get the second class name
+      switch (className) {
+        case "days":
+          countdownElements[i].innerHTML = days;
+          break;
+        case "hours":
+          countdownElements[i].innerHTML = hours;
+          break;
+        case "minutes":
+          countdownElements[i].innerHTML = minutes;
+          break;
+        case "seconds":
+          countdownElements[i].innerHTML = seconds;
+          break;
+        default:
+          break;
+      }
+    }
+  }, 1000);
+
+  return (
+    <div className="grid auto-cols-max grid-flow-col gap-5 text-center">
+      <div className="flex flex-col">
+        <span className="countdown font-montserrat text-5xl">
+          <span style={{ "--value": 15 }}></span>
+        </span>
+        days
+      </div>
+      <div className="flex flex-col">
+        <span className="countdown font-montserrat text-5xl">
+          <span style={{ "--value": 10 }}></span>
+        </span>
+        hours
+      </div>
+      <div className="flex flex-col">
+        <span className="countdown font-montserrat text-5xl">
+          <span style={{ "--value": 24 }}></span>
+        </span>
+        min
+      </div>
+      <div className="flex flex-col">
+        <span className="countdown font-mono text-5xl">
+          <span style={{ "--value": 48 }}></span>
+        </span>
+        sec
+      </div>
+    </div>
+  );
 };

@@ -1,8 +1,10 @@
 import { Image } from "../components/Image";
+import { Countdown } from "../components/Countdown";
 
 export const HeroSection = () => {
   return (
     <section className="relative isolate px-6 pt-14 lg:px-8">
+      <Countdown />
       <div
         className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
         aria-hidden="true"
