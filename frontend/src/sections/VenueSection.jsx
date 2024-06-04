@@ -7,7 +7,8 @@ export const VenueSection = () => {
       <Map />
       <div className="flex flex-col">
         <p>
-          Venue address <br /> Wedding Street 888, 12345 Marriage City
+          Venue address <br /> Castelnuovo Tancredi, 53022 Buonconvento SI,
+          Italy
         </p>
       </div>
     </>
