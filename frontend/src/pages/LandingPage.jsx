@@ -1,3 +1,10 @@
+import { LoginForm } from "../components/LoginForm";
+
 export const LandingPage = () => {
-  return <div>LandingPage</div>;
+  return (
+    <>
+      <h1>Landing page</h1>
+      <LoginForm />
+    </>
+  );
 };

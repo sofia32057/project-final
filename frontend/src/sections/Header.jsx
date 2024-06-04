@@ -1,12 +1,23 @@
 import { NavLink, Link } from "react-router-dom";
+import { useStore } from "../../stores/useStore";
 
 export const Header = () => {
+  const { isLoggedIn } = useStore();
+
   return (
-    <header>
+    <header className="relative z-40">
       <nav>
-        <Link to="/">Home</Link>
-        <NavLink to="/my-attendance">My Attendance</NavLink>
-        <NavLink to="/rsvp">RSVP</NavLink>
+        <NavLink to={"/"}>Home</NavLink>
+        {/* Links only for DEV nav */}
+        <NavLink to={"/login"}>Login</NavLink>
+        <NavLink to={"/confirmation"}>Confirmation</NavLink>
+        {/*  */}
+        {isLoggedIn && (
+          <>
+            <NavLink to={"/my-attendance"}>My Attendance</NavLink>
+            <NavLink to="/rsvp">RSVP</NavLink>
+          </>
+        )}
       </nav>
     </header>
   );
