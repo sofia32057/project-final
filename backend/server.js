@@ -125,7 +125,6 @@ app.route("/").get(async (req, res) => {
 app.route("/login").post(async (req, res) => {
   // Find user by name
   const guest = await Guest.findOne({ email: req.body.email }).exec();
-  console.log(guest);
 
   // Check if password is correct
   if (guest && bcrypt.compareSync(req.body.password, guest.password)) {
@@ -133,6 +132,7 @@ app.route("/login").post(async (req, res) => {
     res.status(201).json({
       message: "User logged in successfully",
       accessToken: guest.accessToken,
+      guestId: guest._id,
     });
   } else if (guest) {
     // b. user exists but password did not match
