@@ -15,7 +15,7 @@ export const Map = () => {
         defaultCenter={defaultProps.center}
         defaultZoom={defaultProps.zoom}
       >
-        <AnyReactComponent
+        <GoogleMapReact
           lat={43.141678145786706}
           lng={11.427681586218547}
           text="Wedding Venue"
