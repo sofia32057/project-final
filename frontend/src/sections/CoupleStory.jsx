@@ -9,12 +9,13 @@ export const CoupleStory = () => {
         <div className="lg:col-span-2 lg:col-start-1 lg:row-start-1 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
           <div className="lg:pr-4">
             <div className="lg:max-w-lg">
-              <p className="text-base text-indigo-600 font-semibold leading-7">
-                It's finally happening
-              </p>
-              <Heading content={"Our story"} level={2} />
+              <Heading
+                content={"Our story"}
+                level={2}
+                pre={"It's happening!"}
+              />
               <p className="text-gray-700 mt-6 text-xl leading-8">
-                Together, we've built a life filled with joy, support, and
+                Together, we're building a life filled with joy, support, and
                 endless possibilities.
               </p>
             </div>

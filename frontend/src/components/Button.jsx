@@ -1,23 +1,25 @@
-export const Button = ({ cta }) => {
+import { Link } from "react-router-dom";
+
+export const Button = ({ label, type, style, action }) => {
+  const styling = {
+    primary:
+      "bg-indigo-600 text-white hover:bg-indigo-500 focus-visible:outline-indigo-600 rounded-md px-3.5 py-2.5 text-sm font-semibold shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2",
+    text: "",
+  };
+
   return (
     <>
       <div className="flex">
-        <button
-          className="middle none center mr-3 rounded-lg bg-pink-500 px-6 py-3 font-sans text-xs font-bold uppercase text-white shadow-md shadow-pink-500/20 transition-all hover:shadow-lg hover:shadow-pink-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-          data-ripple-light="true"
-        >
-          {cta}
-        </button>
+        {type === "button" ? (
+          <button className={styling[style]} onClick={action}>
+            {label}
+          </button>
+        ) : (
+          <Link to={action} className={styling[style]}>
+            {label}
+          </Link>
+        )}
       </div>
-
-      {/*     
-    <!-- stylesheet -->
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/@material-tailwind/html@latest/styles/material-tailwind.css"
-  />*/}
-
-      <script src="https://unpkg.com/@material-tailwind/html@latest/scripts/ripple.js"></script>
     </>
   );
 };

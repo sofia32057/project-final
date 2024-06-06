@@ -8,7 +8,6 @@ export const Root = () => {
   return (
     <>
       <Header />
-      <h1>Our wedding site</h1>
       <main className={navigation.state === "loading" ? "loading" : ""}>
         <Suspense fallback={<div>Loading...</div>}>
           <Outlet />

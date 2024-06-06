@@ -9,7 +9,7 @@ export default {
       lg: "1024px",
       xl: "1440px",
     },
-    colors: {},
+    // colors: {},
     fontSize: {
       sm: ["16px", { fontWeight: "400" }],
       md: ["20px", { fontWeight: "400" }],
