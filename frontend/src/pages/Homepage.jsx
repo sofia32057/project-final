@@ -13,15 +13,15 @@ export const Homepage = () => {
   return (
     <>
       <HeroSection />
-      <FishtankSection />
+      {/* <FishtankSection /> */}
       <Schedule />
       <VenueSection />
       <Faq />
       <Accommodation />
       <CoupleStory />
-      <WeddingParty />
+      {/* <WeddingParty />
       <GuestList />
-      <Footer />
+      <Footer /> */}
     </>
   );
 };

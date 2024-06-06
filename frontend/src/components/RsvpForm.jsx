@@ -1,10 +1,15 @@
 import { useEffect, useState } from "react";
+import { useStore } from "../../stores/useStore";
 import { Button } from "./Button";
 import { Icon } from "./Icon";
+import { Select } from "./Select";
+import { Input } from "./Input";
+import { useNavigate } from "react-router-dom";
 
 /* State should be set globally and connected to API for real guest data */
 
 export const RsvpForm = () => {
+  const guestId = useStore((state) => state.guestId);
   const [plusOne, setPlusOne] = useState(false);
   const [rsvp, setRsvp] = useState({
     speech: {
@@ -20,8 +25,9 @@ export const RsvpForm = () => {
 
   const API_KEY = import.meta.env.API_KEY;
   const API_URL = "http://localhost:8080";
-  const guestId = "66561b028575d0e5972fc845"; // FOR DEV, should be loged in ID
+  // const guestId = "66561b028575d0e5972fc845"; // FOR DEV, should be loged in ID
   const foodOptions = ["Select", "Meat", "Fish", "Vegan"];
+  const nav = useNavigate();
 
   // API fetch ---- should be moved to store
   const patchRsvp = async (event) => {
@@ -33,11 +39,11 @@ export const RsvpForm = () => {
         body: JSON.stringify(rsvp),
       });
       if (!response.ok) {
-        throw new Error("Error fetching data");
+        throw new Error("Error fetching data", response);
       }
+      nav("/confirmation");
       console.log("Patched data", guestId, rsvp);
     } catch (error) {
-      // setErrorMessage("Your thought couldn't be posted...");
       throw new Error("Error", error);
     }
   };
@@ -62,126 +68,51 @@ export const RsvpForm = () => {
   useEffect(() => console.log(rsvp), [rsvp]);
 
   return (
-    /*
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
-*/
-
     <form onSubmit={patchRsvp}>
       <div className="space-y-12">
         {/* RSVP section of the form */}
-        <div className="border-gray-900/10 border-b pb-12">
+        <div className="border-b border-gray-900/10 pb-12">
           {/* GUEST RSVP */}
           <div className="mt-10 space-y-10">
             <fieldset id="attending" className="border-gray-300">
-              <legend className="text-base text-gray-900 font-semibold leading-7">
+              <legend className="text-base font-semibold leading-7 text-gray-900">
                 My RSVP
               </legend>
-              <p className="text-gray-600 mt-1 text-sm leading-6">
-                Bla bla bla something about RSVP-ing.
-              </p>
               <div className="mt-6 space-y-6">
-                <div className="relative flex gap-x-3">
-                  <div className="flex h-6 items-center">
-                    <input
-                      id="will-attend"
-                      name="willAttend"
-                      value={rsvp.willAttend}
-                      type="checkbox"
-                      className="border-gray-300 text-indigo-600 focus:ring-indigo-600 h-4 w-4 rounded"
-                      onChange={handleChange}
-                    />
-                  </div>
-                  <div className="text-sm leading-6">
-                    <label
-                      htmlFor="will-attend"
-                      className="text-gray-900 font-medium"
-                    >
-                      I will attend
-                    </label>
-                  </div>
-                </div>
+                <Input
+                  label={"I will attend"}
+                  id={"will-attend"}
+                  name={"willAttend"}
+                  value={rsvp.willAttend}
+                  type={"checkbox"}
+                  onChange={handleChange}
+                />
 
                 {rsvp.willAttend && (
-                  <div className="relative flex gap-x-3">
-                    <div className="flex h-6 items-center">
-                      <input
-                        id="speech"
-                        name="speech.willMakeSpeech"
-                        value={rsvp.speech.willMakeSpeech}
-                        type="checkbox"
-                        className="border-gray-300 text-indigo-600 focus:ring-indigo-600 h-4 w-4 rounded"
-                        onChange={handleNested}
-                      />
-                    </div>
-                    <div className="text-sm leading-6">
-                      <label
-                        htmlFor="speech"
-                        className="text-gray-900 font-medium"
-                      >
-                        I want to make a speech
-                      </label>
-                      <p className="text-gray-500">
-                        All guest speeches are limited to 5 min each.
-                      </p>
-                    </div>
-                  </div>
-                )}
-                {rsvp.willAttend && (
-                  <div className="relative gap-x-3">
-                    <div className="sm:col-span-3">
-                      <label
-                        htmlFor="food-choice"
-                        className="text-gray-900 block text-sm font-medium leading-6"
-                      >
-                        My food preferences
-                      </label>
-                      <div className="mt-2">
-                        <select
-                          id="food-choice"
-                          name="foodChoice"
+                  <>
+                    <Input
+                      label={"I want to make a speech"}
+                      id={"speech"}
+                      name={"speech.willMakeSpeech"}
+                      value={rsvp.speech.willMakeSpeech}
+                      type={"checkbox"}
+                      onChange={handleNested}
+                      p={"All guest speeches are limited to 5 min each."}
+                    />
+
+                    <div className="relative gap-x-3">
+                      <div className="sm:col-span-3">
+                        <Select
+                          label={"My food preferences"}
+                          id={"food-choice"}
+                          name={"food-choice"}
                           value={rsvp.foodChoice}
-                          autoComplete="none"
-                          className="text-gray-900 ring-gray-300 focus:ring-indigo-600 block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset focus:ring-2 focus:ring-inset sm:max-w-xs sm:text-sm sm:leading-6"
-                          onChange={handleChange}
-                        >
-                          {foodOptions.map((op) => (
-                            <option key={op} value={op}>
-                              {op}
-                            </option>
-                          ))}
-                        </select>
-                      </div>
-                    </div>
-                    <div className="col-span-full">
-                      <label
-                        htmlFor="allergy"
-                        className="text-gray-900 block text-sm font-medium leading-6"
-                      >
-                        I am allergic to:
-                      </label>
-                      <div className="mt-2">
-                        <textarea
-                          id="allergy"
-                          name="allergy"
-                          rows={3}
-                          className="text-gray-900 ring-gray-300 placeholder:text-gray-400 focus:ring-indigo-600 block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
-                          defaultValue={""}
+                          options={foodOptions}
                           onChange={handleChange}
                         />
                       </div>
                     </div>
-                  </div>
+                  </>
                 )}
               </div>
             </fieldset>
@@ -191,98 +122,44 @@ export const RsvpForm = () => {
           {rsvp.willAttend && (
             <div className="mt-10 space-y-10">
               <fieldset id="attending" className="border-gray-300">
-                <legend className="text-base text-gray-900 font-semibold leading-7">
+                <legend className="text-base font-semibold leading-7 text-gray-900">
                   My plus one
                 </legend>
-                <p className="text-gray-600 mt-1 text-sm leading-6">
+                <p className="mt-1 text-sm leading-6 text-gray-600">
                   You are welcome to bring a plus one. We just ask that you tell
                   us who.
                 </p>
                 <div className="mt-6 space-y-6">
-                  <div className="relative flex gap-x-3">
-                    <div className="flex h-6 items-center">
-                      <input
-                        id="plus-one"
-                        name="plus-one"
-                        value={plusOne}
-                        type="checkbox"
-                        className="border-gray-300 text-indigo-600 focus:ring-indigo-600 h-4 w-4 rounded"
-                        onChange={() => setPlusOne(!plusOne)}
-                      />
-                    </div>
-                    <div className="text-sm leading-6">
-                      <label
-                        htmlFor="plus-one"
-                        className="text-gray-900 font-medium"
-                      >
-                        I will bring a plus one
-                      </label>
-                    </div>
-                  </div>
+                  <Input
+                    label={"I will bring a plus one"}
+                    id={"plus-one"}
+                    name={"plus-one"}
+                    value={plusOne}
+                    type={"checkbox"}
+                    onChange={() => setPlusOne(!plusOne)}
+                  />
 
                   {/* Info about the plus one - show only if bringing */}
                   {plusOne && (
                     <>
+                      <Input
+                        label={"Their name"}
+                        id={"plus-one-name"}
+                        name={"plusOne.name"}
+                        value={rsvp.plusOne.name}
+                        type={"text"}
+                        onChange={handleNested}
+                      />
+
                       <div className="sm:col-span-3">
-                        <label
-                          htmlFor="plus-one-name"
-                          className="text-gray-900 block text-sm font-medium leading-6"
-                        >
-                          Their name
-                        </label>
-                        <div className="mt-2">
-                          <input
-                            id="plus-one-name"
-                            name="plusOne.name"
-                            value={rsvp.plusOne.name}
-                            type="text"
-                            autoComplete="none"
-                            className="text-gray-900 ring-gray-300 placeholder:text-gray-400 focus:ring-indigo-600 block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
-                            onChange={handleNested}
-                          />
-                        </div>
-                      </div>
-                      <div className="sm:col-span-3">
-                        <label
-                          htmlFor="plus-one-food-choice"
-                          className="text-gray-900 block text-sm font-medium leading-6"
-                        >
-                          Their food preferences
-                        </label>
-                        <div className="mt-2">
-                          <select
-                            id="plus-one-food-choice"
-                            name="plusOne.foodChoice"
-                            value={rsvp.plusOne.foodChoice}
-                            autoComplete="none"
-                            className="text-gray-900 ring-gray-300 focus:ring-indigo-600 block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset focus:ring-2 focus:ring-inset sm:max-w-xs sm:text-sm sm:leading-6"
-                            onChange={handleNested}
-                          >
-                            {foodOptions.map((op) => (
-                              <option key={op} value={op}>
-                                {op}
-                              </option>
-                            ))}
-                          </select>
-                        </div>
-                      </div>
-                      <div className="col-span-full">
-                        <label
-                          htmlFor="allergy"
-                          className="text-gray-900 block text-sm font-medium leading-6"
-                        >
-                          Their allergies:
-                        </label>
-                        <div className="mt-2">
-                          <textarea
-                            id="allergy"
-                            name="allergy"
-                            rows={3}
-                            className="text-gray-900 ring-gray-300 placeholder:text-gray-400 focus:ring-indigo-600 block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
-                            defaultValue={""}
-                            onChange={handleChange}
-                          />
-                        </div>
+                        <Select
+                          label={"Their food preferences"}
+                          id={"plus-one-food-choice"}
+                          name={"plusOne.foodChoice"}
+                          value={rsvp.plusOne.foodChoice}
+                          options={foodOptions}
+                          onChange={handleChange}
+                        />
                       </div>
                     </>
                   )}
@@ -293,7 +170,7 @@ export const RsvpForm = () => {
         </div>
         {/* End of RSVP section */}
 
-        {/* About the guest */}
+        {/* About the guest
         <div className="border-gray-900/10 border-b pb-12">
           <h2 className="text-base text-gray-900 font-semibold leading-7">
             Guest Profile
@@ -342,19 +219,19 @@ export const RsvpForm = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
 
       <div className="mt-6 flex items-center justify-end gap-x-6">
         <button
           type="button"
-          className="text-gray-900 text-sm font-semibold leading-6"
+          className="text-sm font-semibold leading-6 text-gray-900"
         >
           Cancel
         </button>
         <button
           type="submit"
-          className="bg-indigo-600 text-white hover:bg-indigo-500 focus-visible:outline-indigo-600 rounded-md px-3 py-2 text-sm font-semibold shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+          className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
         >
           Save
         </button>

@@ -7,33 +7,16 @@ export const LoginForm = () => {
     email: "",
     password: "",
   });
-  const { setToken, setIsLoggedIn } = useStore();
+  const login = useStore((state) => state.login);
 
   const API_KEY = import.meta.env.API_KEY;
   const API_URL = "http://localhost:8080";
   const nav = useNavigate();
 
-  // API fetch ---- should be moved to store
-  const login = async (event) => {
+  // Handle Submit
+  const handleSubmit = (event) => {
     event.preventDefault();
-    try {
-      const response = await fetch(`${API_URL}/login`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Authorization: API_KEY },
-        body: JSON.stringify(userInput),
-      });
-      if (!response.ok) {
-        throw new Error("Error fetching data");
-      }
-      const userData = await response.json();
-      setUserInput({ email: "", password: "" });
-      setToken(userData.accessToken);
-      setIsLoggedIn(true);
-      nav("/");
-      console.log("User logged in!", userData);
-    } catch (error) {
-      throw new Error("Error", error);
-    }
+    login(userInput);
   };
 
   // Handle change in the form
@@ -64,7 +47,7 @@ export const LoginForm = () => {
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form className="space-y-6" onSubmit={login}>
+          <form className="space-y-6" onSubmit={handleSubmit}>
             <div>
               <label
                 htmlFor="email"
@@ -78,6 +61,7 @@ export const LoginForm = () => {
                   name="email"
                   type="email"
                   required
+                  autoComplete="email"
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   onChange={handleChange}
                 />

@@ -31,7 +31,7 @@ export const App = () => {
         },
         {
           path: "/rsvp",
-          element: <RsvpPage />,
+          element: isLoggedIn ? <RsvpPage /> : <LandingPage />,
         },
         {
           path: "/confirmation",
