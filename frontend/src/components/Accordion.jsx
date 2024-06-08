@@ -12,7 +12,12 @@ export const Accordion = () => {
       <div className="mx-auto w-full max-w-lg divide-y divide-white/5 rounded-xl bg-white/5">
         {faq.map((q) => {
           return (
-            <Disclosure as="div" className="p-6" defaultOpen={false} key={q}>
+            <Disclosure
+              as="article"
+              className="p-6"
+              defaultOpen={false}
+              key={q.question}
+            >
               <DisclosureButton className="group flex w-full items-center justify-between">
                 <span className="text-sm/6 font-medium text-gray-900 group-data-[hover]:text-white/80">
                   {q.question}
