@@ -15,7 +15,7 @@ export const LoginForm = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     login(userInput);
-    isLoggedIn && nav("/");
+    nav("/");
   };
 
   // Handle change in the form
