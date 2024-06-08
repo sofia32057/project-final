@@ -13,7 +13,8 @@ const navigation = [
 
 export const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { isLoggedIn } = useStore();
+  const isLoggedIn = useStore((state) => state.isLoggedIn);
+  const logout = useStore((state) => state.logout);
 
   return (
     <div className="bg-[#ffffff]">
@@ -35,7 +36,7 @@ export const Header = () => {
           <div className="flex lg:hidden">
             <button
               type="button"
-              className="text-gray-700 -m-2.5 inline-flex items-center justify-center rounded-md p-2.5"
+              className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
               onClick={() => setMobileMenuOpen(true)}
             >
               <span className="sr-only">Open main menu</span>
@@ -48,7 +49,7 @@ export const Header = () => {
                 <NavLink
                   key={item.name}
                   to={item.href}
-                  className="text-gray-900 text-sm font-semibold leading-6"
+                  className="text-sm font-semibold leading-6 text-gray-900"
                 >
                   {item.name}
                 </NavLink>
@@ -57,15 +58,15 @@ export const Header = () => {
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
             {isLoggedIn ? (
               <NavLink
-                href="#"
-                className="text-gray-900 text-sm font-semibold leading-6"
+                onClick={logout}
+                className="text-sm font-semibold leading-6 text-gray-900"
               >
                 Log out <span aria-hidden="true">&rarr;</span>
               </NavLink>
             ) : (
               <NavLink
-                href="/login"
-                className="text-gray-900 text-sm font-semibold leading-6"
+                to="/login"
+                className="text-sm font-semibold leading-6 text-gray-900"
               >
                 Log in <span aria-hidden="true">&rarr;</span>
               </NavLink>
@@ -78,7 +79,7 @@ export const Header = () => {
           onClose={setMobileMenuOpen}
         >
           <div className="fixed inset-0 z-50" />
-          <DialogPanel className="sm:ring-gray-900/10 fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-[#ffffff] px-6 py-6 sm:max-w-sm sm:ring-1">
+          <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-[#ffffff] px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
             <div className="flex items-center justify-between">
               <Link href="/" className="-m-1.5 p-1.5">
                 <span className="sr-only">Project Wedding site</span>
@@ -90,7 +91,7 @@ export const Header = () => {
               </Link>
               <button
                 type="button"
-                className="text-gray-700 -m-2.5 rounded-md p-2.5"
+                className="-m-2.5 rounded-md p-2.5 text-gray-700"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 <span className="sr-only">Close menu</span>
@@ -98,24 +99,31 @@ export const Header = () => {
               </button>
             </div>
             <div className="mt-6 flow-root">
-              <div className="divide-gray-500/10 -my-6 divide-y">
+              <div className="-my-6 divide-y divide-gray-500/10">
                 <div className="space-y-2 py-6">
                   {isLoggedIn &&
                     navigation.map((item) => (
                       <NavLink
                         key={item.name}
                         to={item.href}
-                        className="text-base text-gray-900 hover:bg-gray-50 -mx-3 block rounded-lg px-3 py-2 font-semibold leading-7"
+                        className="text-base -mx-3 block rounded-lg px-3 py-2 font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                       >
                         {item.name}
                       </NavLink>
                     ))}
                 </div>
                 <div className="py-6">
-                  {!isLoggedIn && (
+                  {isLoggedIn ? (
+                    <NavLink
+                      onClick={logout}
+                      className="text-base -mx-3 block rounded-lg px-3 py-2.5 font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                    >
+                      Log out
+                    </NavLink>
+                  ) : (
                     <NavLink
                       to="/login"
-                      className="text-base text-gray-900 hover:bg-gray-50 -mx-3 block rounded-lg px-3 py-2.5 font-semibold leading-7"
+                      className="text-base -mx-3 block rounded-lg px-3 py-2.5 font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                     >
                       Log in
                     </NavLink>

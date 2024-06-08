@@ -108,8 +108,10 @@ export const useStore = create(
           }
         }),
 
+      logout: () => set({ isLoggedIn: false, token: "", guestId: "" }),
+
       // Set loading to true
-      setLoading: () => set({ loading: true }),
+      setLoading: (state) => set({ loading: true }),
     }),
     {
       name: "Project Wedding site",
