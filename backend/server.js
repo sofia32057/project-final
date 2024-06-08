@@ -3,7 +3,9 @@ import cors from "cors";
 import mongoose, { model } from "mongoose";
 import expressListEndpoints from "express-list-endpoints";
 import bcrypt from "bcrypt";
-import guestData from "./guests.json";
+import guestData from "./data/guests.json";
+import { Guest } from "./models/GuestModel";
+import { authenticateUser } from "./middlewares/auth";
 
 const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/our-wedding";
 mongoose.connect(mongoUrl);
@@ -16,64 +18,6 @@ const app = express();
 // Add middlewares to enable cors and json body parsing
 app.use(cors());
 app.use(express.json());
-
-// Mongoose model
-const Guest = model("Guest", {
-  accessToken: {
-    type: String,
-    default: () => bcrypt.genSaltSync(),
-  },
-  firstname: {
-    type: String,
-    required: true,
-  },
-  lastname: {
-    type: String,
-    required: true,
-  },
-  email: {
-    type: String,
-    required: true,
-    unique: true,
-  },
-  password: {
-    type: String,
-    required: true,
-  },
-  willAttend: {
-    type: Boolean,
-    default: false,
-  },
-  plusOne: {
-    isAllowed: { type: Boolean, default: false },
-    name: { type: String },
-    foodChoice: { type: String },
-  },
-  speech: {
-    isAllowed: {
-      type: Boolean,
-    },
-    willMakeSpeech: {
-      type: Boolean,
-      default: false,
-    },
-  },
-  foodChoice: {
-    type: String,
-  },
-  relation: {
-    type: String,
-    required: true,
-  },
-  // Combine name a unique username
-  // name: {
-  //   type: String,
-  //   default: () => {
-  //     `${this.firstname} ${this.lastname}`;
-  //   },
-  //   unique: true,
-  // },
-});
 
 // Seed database with guestlist - temporary solution
 if (process.env.RESET_DB) {
@@ -110,8 +54,6 @@ if (process.env.RESET_DB) {
   seedDatabase();
 }
 
-// Auth
-
 // ROUTES
 app.route("/").get(async (req, res) => {
   const endpoints = expressListEndpoints(app);
@@ -143,10 +85,17 @@ app.route("/login").post(async (req, res) => {
   }
 });
 
+// Auth, verify guest's access token
+app
+  .route("/auth")
+  .all(authenticateUser)
+  .get(res => res.status(200).send("Auth OK"));
+
 // Guests
 app
   .route("/guests")
-  // Get all guests (specific fields) --- NOT SECURE! Do not share personal info
+  .all(authenticateUser)
+  // Get all guests (specific fields)
   .get(async (req, res) => {
     const guests = await Guest.find(
       {},
@@ -191,6 +140,7 @@ app
 
 app
   .route("/guests/:guestId")
+  .all(authenticateUser)
   // Find and return specific guest
   .get(async (req, res) => {
     try {
