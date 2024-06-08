@@ -146,7 +146,7 @@ app
     try {
       const guest = await Guest.findById(
         req.params.guestId,
-        "_id firstname lastname relation willAttend plusOne.name"
+        "_id firstname lastname relation willAttend plusOne speech"
       ).exec();
       res.status(201).json(guest);
     } catch (err) {
