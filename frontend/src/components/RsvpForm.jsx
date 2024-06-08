@@ -6,10 +6,10 @@ import { Select } from "./Select";
 import { Input } from "./Input";
 import { useNavigate } from "react-router-dom";
 
-/* State should be set globally and connected to API for real guest data */
-
 export const RsvpForm = () => {
-  const guestId = useStore((state) => state.guestId);
+  const guestData = useStore((state) => state.guestData);
+  const updateGuest = useStore((state) => state.updateGuest);
+  const setGuestData = useStore((state) => state.setGuestData);
   const [plusOne, setPlusOne] = useState(false);
   const [rsvp, setRsvp] = useState({
     speech: {
@@ -22,34 +22,25 @@ export const RsvpForm = () => {
       foodChoice: "Select",
     },
   });
-
-  const API_KEY = import.meta.env.API_KEY;
-  const API_URL = "http://localhost:8080";
-  // const guestId = "66561b028575d0e5972fc845"; // FOR DEV, should be loged in ID
   const foodOptions = ["Select", "Meat", "Fish", "Vegan"];
   const nav = useNavigate();
 
-  // API fetch ---- should be moved to store
-  const patchRsvp = async (event) => {
+  // Check guest details
+  const checkGuest = () => {
+    setGuestData();
+    console.log("check", guestData);
+  };
+
+  // Handle Submit
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    try {
-      const response = await fetch(`${API_URL}/guests/${guestId}`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json", Authorization: API_KEY },
-        body: JSON.stringify(rsvp),
-      });
-      if (!response.ok) {
-        throw new Error("Error fetching data", response);
-      }
-      nav("/confirmation");
-      console.log("Patched data", guestId, rsvp);
-    } catch (error) {
-      throw new Error("Error", error);
-    }
+    updateGuest(rsvp);
+    // nav("/confirmation");
   };
 
   // Handle change in the form
   const handleChange = (event) => {
+    checkGuest();
     const { name, value, type, checked } = event.target;
     const answer = type === "checkbox" ? checked : value;
     setRsvp({ ...rsvp, [name]: answer });
@@ -65,10 +56,12 @@ export const RsvpForm = () => {
     });
   };
 
-  useEffect(() => console.log(rsvp), [rsvp]);
+  useEffect(() => {
+    checkGuest();
+  }, []);
 
   return (
-    <form onSubmit={patchRsvp}>
+    <form onSubmit={handleSubmit}>
       <div className="space-y-12">
         {/* RSVP section of the form */}
         <div className="border-b border-gray-900/10 pb-12">
@@ -119,7 +112,7 @@ export const RsvpForm = () => {
           </div>
 
           {/* PLUS ONE */}
-          {rsvp.willAttend && (
+          {rsvp.willAttend && guestData.plusOne.isAllowed && (
             <div className="mt-10 space-y-10">
               <fieldset id="attending" className="border-gray-300">
                 <legend className="text-base font-semibold leading-7 text-gray-900">

@@ -2,19 +2,18 @@ import { create } from "zustand";
 import { useNavigate } from "react-router-dom";
 import { persist, createJSONStorage } from "zustand/middleware";
 
-const API_KEY = import.meta.env.API_KEY;
 const API_URL = "http://localhost:8080";
 
 export const useStore = create(
   persist(
-    (set) => ({
+    (set, get) => ({
       guestData: {}, // Data from API
       loading: true,
       token: "",
       isLoggedIn: false,
       guestId: "",
+      rsvpOk: false,
 
-      // Functions
       // Login fetch
       login: (userInput) =>
         set(async () => {
@@ -23,12 +22,11 @@ export const useStore = create(
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
-                Authorization: API_KEY,
               },
               body: JSON.stringify(userInput),
             });
             if (!response.ok) {
-              throw new Error("Error fetching data", response.message);
+              throw new Error("Error fetching data", response);
             }
             const userData = await response.json();
             set(() => ({
@@ -36,34 +34,77 @@ export const useStore = create(
               guestId: userData.guestId,
               isLoggedIn: true,
             }));
-            useNavigate("/");
           } catch (error) {
             console.log(error);
             throw new Error("Error", error);
           }
         }),
 
-      // Fetch logged in user
-      fetchUser: () =>
+      // Authorize user
+      authUser: () =>
         set(async (state) => {
           try {
-            const response = await fetch(`${API_URL}/${state.userId}`, {
+            const response = await fetch(`${API_URL}/auth`, {
               method: "GET",
               headers: {
                 "Content-Type": "application/json",
-                Authorization: API_KEY,
+                Authorization: state.token,
+              },
+            });
+            if (!response.ok) {
+              set(() => ({ isLoggedIn: false }));
+              throw new Error("user not authorized");
+            }
+            set(() => ({
+              isLoggedIn: true,
+            }));
+          } catch (error) {
+            throw new Error("Error fetching data: ", error);
+          }
+        }),
+
+      // Fetch data for logged in user
+      setGuestData: () =>
+        set(async (state) => {
+          try {
+            const response = await fetch(`${API_URL}/guests/${state.guestId}`, {
+              method: "GET",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: state.token,
               },
             });
             if (!response.ok) {
               throw new Error("Error fetching data");
             }
-            const data = await res.json();
-            console.log(response);
+            const data = await response.json();
             set(() => ({
               guestData: data,
             }));
           } catch (error) {
+            console.log("Error", error);
             throw new Error("Error fetching data: ", error);
+          }
+        }),
+
+      // RSVP
+      updateGuest: (userInput) =>
+        set(async (state) => {
+          try {
+            const response = await fetch(`${API_URL}/guests/${state.guestId}`, {
+              method: "PATCH",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: state.token,
+              },
+              body: JSON.stringify(userInput),
+            });
+            if (!response.ok) {
+              throw new Error("Error fetching data", response);
+            }
+            console.log("Patched data");
+          } catch (err) {
+            throw new Error("Error", err.errors);
           }
         }),
 
@@ -75,6 +116,7 @@ export const useStore = create(
       storage: createJSONStorage(() => localStorage),
       partialize: (state) => ({
         guestId: state.guestId,
+        token: state.token,
         isLoggedIn: state.isLoggedIn,
       }),
     },

@@ -8,15 +8,14 @@ export const LoginForm = () => {
     password: "",
   });
   const login = useStore((state) => state.login);
-
-  const API_KEY = import.meta.env.API_KEY;
-  const API_URL = "http://localhost:8080";
+  const isLoggedIn = useStore((state) => state.isLoggedIn);
   const nav = useNavigate();
 
   // Handle Submit
   const handleSubmit = (event) => {
     event.preventDefault();
     login(userInput);
+    isLoggedIn && nav("/");
   };
 
   // Handle change in the form
