@@ -10,7 +10,7 @@ export const Map = () => {
   };
   return (
     // Important! Always set the container height explicitly
-    <div style={{ height: "100vh", width: "100%" }}>
+    <div className="h-96 w-svw">
       <GoogleMapReact
         defaultCenter={defaultProps.center}
         defaultZoom={defaultProps.zoom}
