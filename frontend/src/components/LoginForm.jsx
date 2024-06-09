@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useStore } from "../../stores/useStore";
+import { Heading } from "./Heading";
 import { Button } from "./Button";
 
 export const LoginForm = () => {
@@ -26,7 +27,7 @@ export const LoginForm = () => {
 
   return (
     <>
-      <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+      <div className="flex h-full flex-col justify-center px-6 lg:px-8">
         <div className="mx-auto w-full max-w-sm">
           <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
             Log in with your invitation to see wedding information
