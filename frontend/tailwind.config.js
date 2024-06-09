@@ -24,7 +24,7 @@ export default {
       "md-bold": ["20px", { fontWeight: "700" }],
       lg: ["30px", { fontWeight: "400" }],
       "lg-bold": ["30", { fontWeight: "700" }],
-      xl: ["35px", { fontWeight: "700" }],
+      xl: ["35px"],
       "2xl": ["40px", { fontWeight: "700" }],
       "3xl": ["55px", { fontWeight: "700" }],
       "4xl": ["64px", { fontWeight: "700" }],

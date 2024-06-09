@@ -2,11 +2,12 @@ import { Image } from "../components/Image";
 import { Countdown } from "../components/Countdown";
 import { Heading } from "../components/Heading";
 import { Button } from "../components/Button";
+import Chairs from "../assets/jeremy-wong-weddings-K41SGnGKxVk-unsplash_640x427.jpg";
 
 export const HeroSection = () => {
   return (
-    <section className="relative isolate px-6 pt-14 lg:px-8">
-      <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
+    <section className="relative isolate">
+      <div className="mx-auto max-w-2xl py-4 md:py-16 lg:py-24">
         <Countdown />
         <div className="text-center">
           <Heading
@@ -15,7 +16,7 @@ export const HeroSection = () => {
             pre={"We're getting married!"}
           />
 
-          <p className="text-base mt-6 leading-8 text-gray-600  lg:text-lg">
+          <p className="text-primary font-light!important mt-6 font-cormorant leading-8 sm:text-md md:text-xl ">
             <span className="block text-left leading-loose">
               Dear Family and Friends,
             </span>{" "}
@@ -34,6 +35,9 @@ export const HeroSection = () => {
               style={"primary"}
               action={"/rsvp"}
             />
+          </div>
+          <div className="-ml-12 -mt-12 p-12 lg:sticky lg:top-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
+            <Image src={Chairs} />
           </div>
         </div>
       </div>
