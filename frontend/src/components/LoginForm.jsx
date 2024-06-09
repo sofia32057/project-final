@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useStore } from "../../stores/useStore";
+import { Button } from "./Button";
 
 export const LoginForm = () => {
   const [userInput, setUserInput] = useState({
@@ -25,21 +26,8 @@ export const LoginForm = () => {
 
   return (
     <>
-      {/*
-        This example requires updating your template:
-
-        ```
-        <html class="h-full bg-white">
-        <body class="h-full">
-        ```
-      */}
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div className="mx-auto w-full max-w-sm">
-          <img
-            className="mx-auto h-10 w-auto"
-            src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-            alt="Your Company"
-          />
           <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
             Log in with your invitation to see wedding information
           </h2>
@@ -61,7 +49,7 @@ export const LoginForm = () => {
                   type="email"
                   required
                   autoComplete="email"
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="focus:ring-secondary placeholder:text-text block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
                   onChange={handleChange}
                 />
               </div>
@@ -71,18 +59,10 @@ export const LoginForm = () => {
               <div className="flex items-center justify-between">
                 <label
                   htmlFor="password"
-                  className="block text-sm font-medium leading-6 text-gray-900"
+                  className="text-text block text-sm font-medium leading-6"
                 >
                   Invitation code
                 </label>
-                {/* <div className="text-sm">
-                  <a
-                    href="#"
-                    className="text-indigo-600 hover:text-indigo-500 font-semibold"
-                  >
-                    Forgot password?
-                  </a>
-                </div> */}
               </div>
               <div className="mt-2">
                 <input
@@ -91,16 +71,22 @@ export const LoginForm = () => {
                   type="password"
                   autoComplete="current-password"
                   required
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="focus:ring-secondary text-text block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
                   onChange={handleChange}
                 />
               </div>
             </div>
 
             <div>
+              {/* <Button
+                label={"Sign in"}
+                type={"handleSubmit"}
+                style={"primary"}
+                action={"/"}
+              /> */}
               <button
                 type="submit"
-                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                className="bg-background font-cormorant hover:bg-accent hover:outline-primary focus-visible:outline-primary flex w-full items-center justify-center rounded-md px-4 py-2.5 text-base font-semibold shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
               >
                 Sign in
               </button>
@@ -111,7 +97,7 @@ export const LoginForm = () => {
             Lost your invitation?{" "}
             <a
               href="#"
-              className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
+              className="text-accent font-semibold leading-6 hover:text-indigo-500"
             >
               Contact us and we'll send you your login.
             </a>
