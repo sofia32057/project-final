@@ -1,3 +1,8 @@
 export const Accommodation = () => {
-  return <div>Accommodation</div>;
+  return (
+    <>
+      <h2>Where to stay</h2>
+      <Carousel />
+    </>
+  );
 };
