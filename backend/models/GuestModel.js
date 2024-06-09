@@ -1,4 +1,5 @@
 import mongoose, { model } from "mongoose";
+import bcrypt from "bcrypt";
 
 // Mongoose model
 export const Guest = model("Guest", {
@@ -21,7 +22,7 @@ export const Guest = model("Guest", {
   },
   password: {
     type: String,
-    required: true,
+    required: false,
   },
   willAttend: {
     type: Boolean,

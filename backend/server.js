@@ -3,9 +3,11 @@ import cors from "cors";
 import mongoose, { model } from "mongoose";
 import expressListEndpoints from "express-list-endpoints";
 import bcrypt from "bcrypt";
-import guestData from "./data/guests.json";
+// import guestData from "./data/guests.json";
 import { Guest } from "./models/GuestModel";
 import { authenticateUser } from "./middlewares/auth";
+import dotenv from "dotenv";
+dotenv.config();
 
 const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/our-wedding";
 mongoose.connect(mongoUrl);
@@ -19,41 +21,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Seed database with guestlist - temporary solution
-if (process.env.RESET_DB) {
-  console.log("Resetting the database!");
-  const seedDatabase = async () => {
-    await Guest.deleteMany({});
-
-    guestData.forEach(async guest => {
-      const {
-        firstname,
-        lastname,
-        email,
-        password,
-        plusOne,
-        speech,
-        foodChoice,
-        relation,
-        willAttend,
-      } = guest;
-
-      new Guest({
-        firstname,
-        lastname,
-        email,
-        password: bcrypt.hashSync(password, 10),
-        plusOne,
-        speech,
-        foodChoice,
-        relation,
-        willAttend,
-      }).save();
-    });
-  };
-  seedDatabase();
-}
-
 // ROUTES
 app.route("/").get(async (req, res) => {
   const endpoints = expressListEndpoints(app);
@@ -64,23 +31,27 @@ app.route("/").get(async (req, res) => {
 });
 
 //Login
-app.route("/login").post(async (req, res) => {
-  // Find user by name
+app.route("/login").patch(async (req, res) => {
+  // Find guest by email
   const guest = await Guest.findOne({ email: req.body.email }).exec();
 
-  // Check if password is correct
-  if (guest && bcrypt.compareSync(req.body.password, guest.password)) {
-    // a. User name and password match
+  // Check if invitation code is correct
+  if (guest && req.body.password === process.env.INVITE_CODE) {
+    // a. guest email and code match
+    // create and save access token
+    guest.accessToken = bcrypt.genSaltSync();
+    guest.save();
+    //send result to client
     res.status(201).json({
       message: "User logged in successfully",
       accessToken: guest.accessToken,
       guestId: guest._id,
     });
   } else if (guest) {
-    // b. user exists but password did not match
-    res.status(401).json({ message: "Password did not match" });
+    // b. guest exists but code did not match
+    res.status(401).send("Password did not match");
   } else {
-    // c. user does not exists
+    // c. guest does not exists
     res.status(400).json({ message: "guest name invalid" });
   }
 });

@@ -19,7 +19,7 @@ export const useStore = create(
         set(async () => {
           try {
             const response = await fetch(`${API_URL}/login`, {
-              method: "POST",
+              method: "PATCH",
               headers: {
                 "Content-Type": "application/json",
               },
