@@ -9,7 +9,13 @@ export default {
       lg: "1024px",
       xl: "1440px",
     },
-    // colors: {},
+    colors: {
+      text: "#2f151e",
+      primary: "#451E2C",
+      secondary: "#007678",
+      accent: "#CF9EAC",
+      background: " #DDD7C6",
+    },
     fontSize: {
       sm: ["16px", { fontWeight: "400" }],
       md: ["20px", { fontWeight: "400" }],
@@ -19,6 +25,7 @@ export default {
       xl: ["35px", { fontWeight: "700" }],
       "2xl": ["40px", { fontWeight: "700" }],
       "3xl": ["55px", { fontWeight: "700" }],
+      "4xl": ["64px", { fontWeight: "700" }],
     },
     extend: {
       fontFamily: {

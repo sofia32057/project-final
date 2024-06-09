@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 export const Button = ({ label, type, style, action }) => {
   const styling = {
     primary:
-      "bg-indigo-600 text-white hover:bg-indigo-500 focus-visible:outline-indigo-600 rounded-md px-3.5 py-2.5 text-sm font-semibold shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2",
-    text: "text-sm font-semibold text-gray-900",
+      "bg-background font-cormorant flex justify-center items-center hover:bg-accent hover:outline-primary focus-visible:outline-primary rounded-md px-4 py-2.5 text-base font-semibold shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2",
+    text: "text-base font-bold text-primary font-cormorant hover:underline curstor-pointer",
   };
 
   return (
@@ -12,7 +12,7 @@ export const Button = ({ label, type, style, action }) => {
       <div className="flex">
         {type === "button" ? (
           <button className={styling[style]} onClick={action}>
-            {label}
+            {label} {style === "text" && <span aria-hidden="true">&rarr;</span>}
           </button>
         ) : (
           <Link to={action} className={styling[style]}>
