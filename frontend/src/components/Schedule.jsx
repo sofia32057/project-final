@@ -13,9 +13,9 @@ import {
 
 export const Schedule = () => {
   return (
-    <section class="antialiased">
-      <div class="mx-auto max-w-screen-xl px-6 py-8 sm:py-16 lg:px-6 lg:py-24">
-        <div class="mx-auto max-w-3xl text-left">
+    <section className="antialiased">
+      <div className="mx-auto max-w-screen-xl px-6 py-8 sm:py-16 lg:px-6 lg:py-24">
+        <div className="mx-auto max-w-3xl text-left">
           <Heading content={"Schedule of our day"} level={2} pre={""} />
         </div>
 
