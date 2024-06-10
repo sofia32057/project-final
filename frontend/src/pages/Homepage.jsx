@@ -16,8 +16,8 @@ export const Homepage = () => {
       {/* <FishtankSection /> */}
       <Schedule />
       <VenueSection />
+      <Accommodation />
       <Faq />
-      {/* <Accommodation /> */}
       <CoupleStory />
       {/* <WeddingParty />
       <GuestList />

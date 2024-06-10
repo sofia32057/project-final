@@ -1,8 +1,11 @@
+import { Heading } from "../components/Heading";
+import { Carousel } from "../components/Carousel";
+
 export const Accommodation = () => {
   return (
-    <>
-      <h2>Where to stay</h2>
-      <Carousel />
-    </>
+    <div className="px-8">
+      <Heading content={"Where to stay"} level={2} pre={""} />
+      {/* <Carousel /> */}
+    </div>
   );
 };
