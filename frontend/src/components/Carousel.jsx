@@ -6,8 +6,6 @@ export const Carousel = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
   };
-  
-  const 
 
   return (
     <Slider>
