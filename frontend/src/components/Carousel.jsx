@@ -1,3 +1,5 @@
+import { CarouselCard } from "./CarouselCard";
+
 export const Carousel = () => {
   const settings = {
     dots: true,
