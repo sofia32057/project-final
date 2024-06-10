@@ -1,23 +1,25 @@
-export const Button = ({ cta }) => {
+import { Link } from "react-router-dom";
+
+export const Button = ({ label, type, style, action }) => {
+  const styling = {
+    primary:
+      "bg-background font-cormorant flex justify-center items-center hover:bg-accent hover:outline-primary focus-visible:outline-primary rounded-md px-4 py-2.5 text-base font-semibold shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2",
+    text: "text-base font-bold text-primary font-cormorant hover:underline curstor-pointer",
+  };
+
   return (
     <>
       <div className="flex">
-        <button
-          className="middle none center mr-3 rounded-lg bg-pink-500 px-6 py-3 font-sans text-xs font-bold uppercase text-white shadow-md shadow-pink-500/20 transition-all hover:shadow-lg hover:shadow-pink-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-          data-ripple-light="true"
-        >
-          {cta}
-        </button>
+        {type === "button" ? (
+          <button className={styling[style]} onClick={action}>
+            {label} {style === "text" && <span aria-hidden="true">&rarr;</span>}
+          </button>
+        ) : (
+          <Link to={action} className={styling[style]}>
+            {label} <span aria-hidden="true">&rarr;</span>
+          </Link>
+        )}
       </div>
-
-      {/*     
-    <!-- stylesheet -->
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/@material-tailwind/html@latest/styles/material-tailwind.css"
-  />*/}
-
-      <script src="https://unpkg.com/@material-tailwind/html@latest/scripts/ripple.js"></script>
     </>
   );
 };

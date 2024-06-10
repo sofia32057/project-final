@@ -5,4 +5,25 @@
 :root {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
+
+@layer base {
+  @font-face {
+    font-family: Cormorant;
+    src: url(./assets/Cormorant-VariableFont_wght.ttf);
+  }
+  :root {
+    @apply text-text;
+  }
+
+  h1,h2,h3 {
+    @apply font-cormorant
+  }
+
+  a:hover {
+    @apply 
+      underline cursor-pointer
+  }
+
 }

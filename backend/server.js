@@ -3,7 +3,11 @@ import cors from "cors";
 import mongoose, { model } from "mongoose";
 import expressListEndpoints from "express-list-endpoints";
 import bcrypt from "bcrypt";
-import guestData from "./guests.json";
+// import guestData from "./data/guests.json";
+import { Guest } from "./models/GuestModel";
+import { authenticateUser } from "./middlewares/auth";
+import dotenv from "dotenv";
+dotenv.config();
 
 const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/our-wedding";
 mongoose.connect(mongoUrl);
@@ -17,101 +21,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Mongoose model
-const Guest = model("Guest", {
-  accessToken: {
-    type: String,
-    default: () => bcrypt.genSaltSync(),
-  },
-  firstname: {
-    type: String,
-    required: true,
-  },
-  lastname: {
-    type: String,
-    required: true,
-  },
-  email: {
-    type: String,
-    required: true,
-    unique: true,
-  },
-  password: {
-    type: String,
-    required: true,
-  },
-  willAttend: {
-    type: Boolean,
-    default: false,
-  },
-  plusOne: {
-    isAllowed: { type: Boolean, default: false },
-    name: { type: String },
-    foodChoice: { type: String },
-  },
-  speech: {
-    isAllowed: {
-      type: Boolean,
-    },
-    willMakeSpeech: {
-      type: Boolean,
-      default: false,
-    },
-  },
-  foodChoice: {
-    type: String,
-  },
-  relation: {
-    type: String,
-    required: true,
-  },
-  // Combine name a unique username
-  // name: {
-  //   type: String,
-  //   default: () => {
-  //     `${this.firstname} ${this.lastname}`;
-  //   },
-  //   unique: true,
-  // },
-});
-
-// Seed database with guestlist - temporary solution
-if (process.env.RESET_DB) {
-  console.log("Resetting the database!");
-  const seedDatabase = async () => {
-    await Guest.deleteMany({});
-
-    guestData.forEach(async guest => {
-      const {
-        firstname,
-        lastname,
-        email,
-        password,
-        plusOne,
-        speech,
-        foodChoice,
-        relation,
-        willAttend,
-      } = guest;
-
-      new Guest({
-        firstname,
-        lastname,
-        email,
-        password: bcrypt.hashSync(password, 10),
-        plusOne,
-        speech,
-        foodChoice,
-        relation,
-        willAttend,
-      }).save();
-    });
-  };
-  seedDatabase();
-}
-
-// Auth
-
 // ROUTES
 app.route("/").get(async (req, res) => {
   const endpoints = expressListEndpoints(app);
@@ -122,31 +31,42 @@ app.route("/").get(async (req, res) => {
 });
 
 //Login
-app.route("/login").post(async (req, res) => {
-  // Find user by name
+app.route("/login").patch(async (req, res) => {
+  // Find guest by email
   const guest = await Guest.findOne({ email: req.body.email }).exec();
-  console.log(guest);
 
-  // Check if password is correct
-  if (guest && bcrypt.compareSync(req.body.password, guest.password)) {
-    // a. User name and password match
+  // Check if invitation code is correct
+  if (guest && req.body.password === process.env.INVITE_CODE) {
+    // a. guest email and code match
+    // create and save access token
+    guest.accessToken = bcrypt.genSaltSync();
+    guest.save();
+    //send result to client
     res.status(201).json({
       message: "User logged in successfully",
       accessToken: guest.accessToken,
+      guestId: guest._id,
     });
   } else if (guest) {
-    // b. user exists but password did not match
-    res.status(401).json({ message: "Password did not match" });
+    // b. guest exists but code did not match
+    res.status(401).send("Password did not match");
   } else {
-    // c. user does not exists
+    // c. guest does not exists
     res.status(400).json({ message: "guest name invalid" });
   }
 });
 
+// Auth, verify guest's access token
+app
+  .route("/auth")
+  .all(authenticateUser)
+  .get(res => res.status(200).send("Auth OK"));
+
 // Guests
 app
   .route("/guests")
-  // Get all guests (specific fields) --- NOT SECURE! Do not share personal info
+  .all(authenticateUser)
+  // Get all guests (specific fields)
   .get(async (req, res) => {
     const guests = await Guest.find(
       {},
@@ -191,12 +111,13 @@ app
 
 app
   .route("/guests/:guestId")
+  .all(authenticateUser)
   // Find and return specific guest
   .get(async (req, res) => {
     try {
       const guest = await Guest.findById(
         req.params.guestId,
-        "_id firstname lastname relation willAttend plusOne.name"
+        "_id firstname lastname relation willAttend plusOne speech"
       ).exec();
       res.status(201).json(guest);
     } catch (err) {

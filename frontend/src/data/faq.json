@@ -1,0 +1,60 @@
+{
+  "faq": [
+  {
+    "question": "When and where is the wedding?",
+    "answer": "The wedding will take place on [Date] at [Venue Name], located at [Venue Address]. The ceremony will begin at [Time], followed by the reception."
+  },
+  {
+    "question": "What is the dress code?",
+    "answer": "The dress code is semi-formal. We encourage guests to dress comfortably yet elegantly for the occasion."
+  },
+  {
+    "question": "How do I RSVP?",
+    "answer": "You can RSVP by [Date] through our wedding website at [Website URL] or by contacting [Contact Person] at [Contact Information]."
+  },
+  {
+    "question": "Can I bring a plus one?",
+    "answer": "If your invitation includes a plus one, please include their name and food choice when you RSVP. If you’re unsure, please check with us."
+  },
+  {
+    "question": "Are there accommodations nearby?",
+    "answer": "Yes, we have reserved a block of rooms at [Hotel Name], located at [Hotel Address]. Mention our wedding to receive a discounted rate. For more options, please visit our wedding website."
+  },
+  {
+    "question": "How do I get to the venue?",
+    "answer": "Directions to the venue can be found on our wedding website under the 'Directions' section. Parking is available on-site."
+  },
+  {
+    "question": "What time should I arrive?",
+    "answer": "We recommend arriving at least 30 minutes before the ceremony begins to ensure you find your seat and settle in comfortably."
+  },
+  {
+    "question": "Will there be a cocktail hour?",
+    "answer": "Yes, there will be a cocktail hour immediately following the ceremony. Drinks and light appetizers will be served."
+  },
+  {
+    "question": "What type of food will be served?",
+    "answer": "We will be offering a variety of meal options, including vegetarian and gluten-free choices. Please specify any dietary restrictions when you RSVP."
+  },
+  {
+    "question": "Is there a gift registry?",
+    "answer": "Yes, we are registered at [Store Names]. You can find our registry details on our wedding website under the 'Registry' section."
+  },
+  {
+    "question": "Can I take photos during the ceremony?",
+    "answer": "We kindly request that guests refrain from taking photos during the ceremony. We have hired a professional photographer to capture these special moments. Feel free to take photos during the reception."
+  },
+  {
+    "question": "Will there be dancing?",
+    "answer": "Yes, there will be a dance floor and DJ at the reception. We look forward to celebrating and dancing with you!"
+  },
+  {
+    "question": "Are children welcome?",
+    "answer": "While we love your little ones, we have decided to make our wedding an adult-only event. We appreciate your understanding."
+  },
+  {
+    "question": "What if I have a question not answered here?",
+    "answer": "Please feel free to contact us at [Contact Information] or visit our wedding website for more information. We’re happy to help with any additional questions you may have."
+  }
+]
+}
