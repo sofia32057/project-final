@@ -10,6 +10,8 @@ export default {
       xl: "1440px",
     },
     colors: {
+      transparent: "transparent",
+      white: "#FFFFFF",
       text: "#2f151e",
       primary: "#451E2C",
       secondary: "#007678",
