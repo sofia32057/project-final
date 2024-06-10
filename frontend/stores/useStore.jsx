@@ -2,7 +2,7 @@ import { create } from "zustand";
 import { useNavigate } from "react-router-dom";
 import { persist, createJSONStorage } from "zustand/middleware";
 
-const API_URL = "http://localhost:8080";
+const API_URL = "https://project-final-gvph.onrender.com";
 
 export const useStore = create(
   persist(
