@@ -27,7 +27,7 @@ export const LoginForm = () => {
 
   return (
     <>
-      <div className="flex h-full flex-col justify-center px-6 lg:px-8">
+      <div className=" flex flex-col justify-center px-6 py-10 md:py-16 lg:px-8">
         <div className="mx-auto w-full max-w-sm">
           <Heading
             content={"Log in with your invitation to see wedding information"}
@@ -51,7 +51,7 @@ export const LoginForm = () => {
                   type="email"
                   required
                   autoComplete="email"
-                  className="block w-full rounded-md border-0 py-1.5 text-sm leading-6 text-text shadow-sm ring-1 ring-inset ring-text placeholder:text-text focus:ring-2 focus:ring-inset focus:ring-secondary"
+                  className="block w-full rounded-md border-0 py-1.5 text-sm leading-6 text-text shadow-sm ring-1 ring-inset ring-accent placeholder:text-text focus:ring-2 focus:ring-inset focus:ring-secondary"
                   onChange={handleChange}
                 />
               </div>
@@ -73,7 +73,7 @@ export const LoginForm = () => {
                   type="password"
                   autoComplete="current-password"
                   required
-                  className="ring-gray-300 placeholder:text-gray-400 block w-full rounded-md border-0 py-1.5 text-sm leading-6 text-text shadow-sm ring-1 ring-inset focus:ring-2 focus:ring-inset focus:ring-secondary"
+                  className="placeholder:text-gray-400 block w-full rounded-md border-0 py-1.5 text-sm leading-6 text-text shadow-sm ring-1 ring-inset ring-accent focus:ring-2 focus:ring-inset focus:ring-secondary"
                   onChange={handleChange}
                 />
               </div>

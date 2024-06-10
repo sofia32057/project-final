@@ -1,9 +1,9 @@
 export const Heading = ({ content, level, pre }) => {
   const Tag = `h${level}`;
   const styling = {
-    1: "text-primary text-3xl font-bold md:text-4xl md:tracking-tight leading-snug",
-    2: "text-primary text-2xl text-left font-bold md:text-3xl tracking-tight leading-9",
-    3: "mt-16 text-2xl font-bold tracking-tight ",
+    1: "text-primary text-3xl font-bold md:text-4xl md:tracking-tight leading-tight",
+    2: "text-primary text-2xl text-left font-bold md:text-3xl tracking-tight md:leading-tight leading-9",
+    3: "mt-8 md:mt-16 text-2xl font-bold tracking-tight ",
   };
 
   return (
