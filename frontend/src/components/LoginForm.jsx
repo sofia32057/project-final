@@ -29,9 +29,10 @@ export const LoginForm = () => {
     <>
       <div className="flex h-full flex-col justify-center px-6 lg:px-8">
         <div className="mx-auto w-full max-w-sm">
-          <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-            Log in with your invitation to see wedding information
-          </h2>
+          <Heading
+            content={"Log in with your invitation to see wedding information"}
+            level={2}
+          />
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
@@ -39,7 +40,7 @@ export const LoginForm = () => {
             <div>
               <label
                 htmlFor="email"
-                className="block text-sm font-medium leading-6 text-gray-900"
+                className="text-gray-900 block text-sm font-medium leading-6"
               >
                 Email address
               </label>
@@ -50,7 +51,7 @@ export const LoginForm = () => {
                   type="email"
                   required
                   autoComplete="email"
-                  className="focus:ring-secondary placeholder:text-text block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 py-1.5 text-sm leading-6 text-text shadow-sm ring-1 ring-inset ring-text placeholder:text-text focus:ring-2 focus:ring-inset focus:ring-secondary"
                   onChange={handleChange}
                 />
               </div>
@@ -60,7 +61,7 @@ export const LoginForm = () => {
               <div className="flex items-center justify-between">
                 <label
                   htmlFor="password"
-                  className="text-text block text-sm font-medium leading-6"
+                  className="block text-sm font-medium leading-6 text-text"
                 >
                   Invitation code
                 </label>
@@ -72,7 +73,7 @@ export const LoginForm = () => {
                   type="password"
                   autoComplete="current-password"
                   required
-                  className="focus:ring-secondary text-text block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
+                  className="ring-gray-300 placeholder:text-gray-400 block w-full rounded-md border-0 py-1.5 text-sm leading-6 text-text shadow-sm ring-1 ring-inset focus:ring-2 focus:ring-inset focus:ring-secondary"
                   onChange={handleChange}
                 />
               </div>
@@ -87,18 +88,18 @@ export const LoginForm = () => {
               /> */}
               <button
                 type="submit"
-                className="bg-background font-cormorant hover:bg-accent hover:outline-primary focus-visible:outline-primary flex w-full items-center justify-center rounded-md px-4 py-2.5 text-base font-semibold shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+                className="text-base flex w-full items-center justify-center rounded-md bg-background px-4 py-2.5 font-cormorant font-semibold shadow-md hover:bg-accent hover:outline-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
               >
                 Sign in
               </button>
             </div>
           </form>
 
-          <p className="mt-10 text-center text-sm text-gray-500">
+          <p className="mt-10 text-center text-sm text-text">
             Lost your invitation?{" "}
             <a
               href="#"
-              className="text-accent font-semibold leading-6 hover:text-indigo-500"
+              className="hover:text-indigo-500 font-semibold leading-6 text-accent"
             >
               Contact us and we'll send you your login.
             </a>

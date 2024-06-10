@@ -2,14 +2,14 @@ export const Heading = ({ content, level, pre }) => {
   const Tag = `h${level}`;
   const styling = {
     1: "text-primary text-3xl font-bold md:text-4xl md:tracking-tight leading-snug",
-    2: "text-primary text-2xl text-center font-bold md:text-3xl tracking-tight leading-snug",
+    2: "text-primary text-2xl text-left font-bold md:text-3xl tracking-tight leading-9",
     3: "mt-16 text-2xl font-bold tracking-tight ",
   };
 
   return (
     <>
       {pre && (
-        <p className="text-secondary font-cormorant pt-4 text-base font-bold leading-6">
+        <p className="text-base pt-4 font-cormorant font-bold leading-6 text-secondary">
           {pre}
         </p>
       )}
