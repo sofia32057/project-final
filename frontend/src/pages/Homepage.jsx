@@ -20,8 +20,8 @@ export const Homepage = () => {
       <Faq />
       <CoupleStory />
       {/* <WeddingParty />
-      <GuestList />
-      <Footer /> */}
+      <GuestList /> */}
+      <Footer />
     </>
   );
 };
