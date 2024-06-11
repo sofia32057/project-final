@@ -40,7 +40,7 @@ export const Carousel = () => {
         },
       },
       {
-        breakpoint: 620,
+        breakpoint: 520,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
@@ -51,7 +51,10 @@ export const Carousel = () => {
   };
 
   return (
-    <Slider {...settings} className=" mx-auto my-6 md:max-w-3xl lg:max-w-5xl">
+    <Slider
+      {...settings}
+      className=" px-auto mx-4 my-6 md:mx-auto md:max-w-3xl lg:max-w-5xl"
+    >
       <CarouselCard src={Terrasse} alt={"Terrasse with a view"} />
       <CarouselCard src={Landscape} alt={"Landscape of Tuscany"} />
       <CarouselCard src={DinnerView} alt={"Dinner table with a view"} />
