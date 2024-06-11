@@ -12,10 +12,9 @@ export const useStore = create(
       token: "",
       isLoggedIn: false,
       guestId: "",
-      rsvpOk: false,
 
       // Login fetch
-      login: (userInput) =>
+      login: (userInput, callback) =>
         set(async () => {
           try {
             const response = await fetch(`${API_URL}/login`, {
@@ -34,6 +33,9 @@ export const useStore = create(
               guestId: userData.guestId,
               isLoggedIn: true,
             }));
+            if (callback) {
+              callback();
+            }
           } catch (error) {
             console.log(error);
             throw new Error("Error", error);
@@ -88,7 +90,7 @@ export const useStore = create(
         }),
 
       // RSVP
-      updateGuest: (userInput) =>
+      updateGuest: (userInput, callback) =>
         set(async (state) => {
           try {
             const response = await fetch(`${API_URL}/guests/${state.guestId}`, {
@@ -101,6 +103,9 @@ export const useStore = create(
             });
             if (!response.ok) {
               throw new Error("Error fetching data", response);
+            }
+            if (callback) {
+              callback();
             }
             console.log("Patched data");
           } catch (err) {
