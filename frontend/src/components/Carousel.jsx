@@ -2,6 +2,7 @@ import { CarouselCard } from "./CarouselCard";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { NextArrow, PrevArrow } from "./CustomArrows";
 import Terrasse from "/anastasia-saldatava-DZp5uVfRneI-unsplash.jpg";
 import Garden from "/anastasia-saldatava-oNMk0OOul80-unsplash.jpg";
 import Landscape from "/doozydoom-_v5HCKSZOkA-unsplash.jpg";
@@ -17,6 +18,32 @@ export const Carousel = () => {
     centerPadding: "20px",
     slidesToShow: 3,
     slidesToScroll: 3,
+    centerMode: true,
+    useTransform: true,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
+    appendDots: (dots) => (
+      <div style={{ borderRadius: "10px", color: "#451E2C" }}>
+        <ul style={{ margin: "0px" }}> {dots} </ul>
+      </div>
+    ),
+    customPaging: (i) => (
+      <div
+        style={{
+          width: "10px",
+          height: "10px",
+          borderRadius: "50%",
+          background: "#451E2C",
+          color: "#451E2C",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          fontSize: "12px",
+        }}
+      >
+        {i + 1}
+      </div>
+    ),
     responsive: [
       {
         breakpoint: 1024,

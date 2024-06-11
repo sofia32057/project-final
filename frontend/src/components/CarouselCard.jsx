@@ -1,5 +1,5 @@
 export const CarouselCard = ({ styling, src, alt }) => {
-  const defaultStyling = "h-80 w-auto rounded-xl object-cover p-1 md:h-90";
+  const defaultStyling = "h-96 min-w-40 rounded-xl object-cover p-1";
   const style = styling || defaultStyling;
 
   return <img className={style} src={src} alt={alt} />;
