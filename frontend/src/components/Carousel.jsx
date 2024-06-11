@@ -1,6 +1,7 @@
 // import { CarouselCard } from "./CarouselCard";
 import Slider from "react-slick";
-
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import Terrasse from "/anastasia-saldatava-DZp5uVfRneI-unsplash.jpg";
 import Garden from "/anastasia-saldatava-oNMk0OOul80-unsplash.jpg";
 import Landscape from "/doozydoom-_v5HCKSZOkA-unsplash.jpg";
@@ -13,30 +14,48 @@ export const Carousel = () => {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 1,
+    centerPadding: "20px",
+    slidesToShow: 3,
     slidesToScroll: 1,
   };
 
   return (
     <Slider {...settings}>
-      <div>
-        <img src={Terrasse} alt={"Terrasse with a view"} />
-      </div>
-      <div>
-        <img src={Garden} alt={"Garden with table and chairs"} />
-      </div>
-      <div>
-        <img src={Landscape} alt={"Landscape of Tuscany"} />
-      </div>
-      <div>
-        <img src={DawnLandscape} alt={"View to Tuscan house at dawn"} />
-      </div>
-      <div>
-        <img src={HouseTerrasse} alt={"House with a terrasse in front"} />
-      </div>
-      <div>
-        <img src={Pool} alt={"Poolside in Tuscany"} />
-      </div>
+      <img
+        className="h-60 w-auto object-cover p-2"
+        src={Terrasse}
+        alt={"Terrasse with a view"}
+      />
+
+      <img
+        className="h-60 w-auto object-cover p-2"
+        src={Landscape}
+        alt={"Landscape of Tuscany"}
+      />
+
+      <img
+        className="h-60 w-auto object-cover p-2"
+        src={DawnLandscape}
+        alt={"View to Tuscan house at dawn"}
+      />
+
+      <img
+        className="h-60 w-auto object-cover p-2"
+        src={HouseTerrasse}
+        alt={"House with a terrasse in front"}
+      />
+
+      <img
+        className="h-60 w-auto object-cover p-2"
+        src={Pool}
+        alt={"Poolside in Tuscany"}
+      />
+
+      <img
+        className="h-60 w-auto object-cover p-2"
+        src={Garden}
+        alt={"Garden with table and chairs"}
+      />
     </Slider>
   );
 };
