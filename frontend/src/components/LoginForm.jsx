@@ -16,14 +16,20 @@ export const LoginForm = () => {
   // Handle Submit
   const handleSubmit = (event) => {
     event.preventDefault();
-    login(userInput);
-    nav("/");
+    login(userInput, () => {
+      nav("/");
+      location.reload();
+    });
   };
 
   // Handle change in the form
   const handleChange = (event) => {
     setUserInput({ ...userInput, [event.target.name]: event.target.value });
   };
+
+  useEffect(() => {
+    setUserInput();
+  }, []);
 
   return (
     <>
@@ -80,18 +86,13 @@ export const LoginForm = () => {
             </div>
 
             <div>
-              {/* <Button
-                label={"Sign in"}
-                type={"handleSubmit"}
-                style={"primary"}
-                action={"/"}
-              /> */}
-              <button
+              <Button label={"Log in"} type={"button"} style={"login"} />
+              {/* <button
                 type="submit"
                 className="text-base flex w-full items-center justify-center rounded-md bg-background px-4 py-2.5 font-cormorant font-semibold shadow-md hover:bg-accent hover:outline-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
               >
                 Sign in
-              </button>
+              </button> */}
             </div>
           </form>
 

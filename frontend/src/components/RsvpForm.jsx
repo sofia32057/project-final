@@ -34,8 +34,10 @@ export const RsvpForm = () => {
   // Handle Submit
   const handleSubmit = async (event) => {
     event.preventDefault();
-    updateGuest(rsvp);
-    // nav("/confirmation");
+    updateGuest(rsvp, () => {
+      nav("/confirmation");
+      location.reload();
+    });
   };
 
   // Handle change in the form
@@ -64,11 +66,11 @@ export const RsvpForm = () => {
     <form onSubmit={handleSubmit}>
       <div className="space-y-12">
         {/* RSVP section of the form */}
-        <div className="border-b border-gray-900/10 pb-12">
+        <div className="border-gray-900/10 border-b pb-12">
           {/* GUEST RSVP */}
           <div className="mt-10 space-y-10">
             <fieldset id="attending" className="border-gray-300">
-              <legend className="text-base font-semibold leading-7 text-gray-900">
+              <legend className="text-base text-gray-900 font-semibold leading-7">
                 My RSVP
               </legend>
               <div className="mt-6 space-y-6">
@@ -117,10 +119,10 @@ export const RsvpForm = () => {
           {rsvp.willAttend && (
             <div className="mt-10 space-y-10">
               <fieldset id="attending" className="border-gray-300">
-                <legend className="text-base font-semibold leading-7 text-gray-900">
+                <legend className="text-base text-gray-900 font-semibold leading-7">
                   My plus one
                 </legend>
-                <p className="mt-1 text-sm leading-6 text-gray-600">
+                <p className="text-gray-600 mt-1 text-sm leading-6">
                   You are welcome to bring a plus one. We just ask that you tell
                   us who.
                 </p>
@@ -225,7 +227,7 @@ export const RsvpForm = () => {
           Cancel
         </button> */}
 
-        <Button label={"Save"} type={"button"} style={"primary"} />
+        <Button label={"Save"} type={"button"} style={"login"} />
       </div>
     </form>
   );
