@@ -2,33 +2,33 @@ import { Image } from "../components/Image";
 import { Countdown } from "../components/Countdown";
 import { Heading } from "../components/Heading";
 import { Button } from "../components/Button";
-import Chairs from "../assets/jeremy-wong-weddings-K41SGnGKxVk-unsplash_640x427.jpg";
+import Chairs from "../assets/jeremy-wong-weddings-K41SGnGKxVk-unsplash_1920x1280.jpg";
+import { Intro } from "../components/Intro";
+import { Paragraph } from "../components/Paragraph";
 
 export const HeroSection = () => {
   return (
-    <section className="relative isolate">
-      <div className="mx-auto max-w-2xl py-4 md:py-16 lg:py-24">
-        <Countdown />
-        <div className="text-center">
+    <section className="relative isolate overflow-hidden lg:overflow-visible">
+      <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-4 gap-y-16  lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-start lg:gap-y-10">
+        {/* <Countdown /> */}
+        <div className="lg:col-start-1 lg:row-start-1 lg:mx-auto lg:w-full lg:max-w-7xl lg:px-8">
           <Heading
             content={"Sarah & Michael"}
             level={1}
             pre={"We're getting married!"}
           />
-
-          <p className="text-primary font-light!important mt-6 font-cormorant leading-8 sm:text-md md:text-xl ">
-            <span className="block text-left leading-loose">
+          <Intro
+            content={`
               Dear Family and Friends,
-            </span>{" "}
-            We are overjoyed to share this special moment with you. Your love
-            and support mean the world to us, and we are incredibly grateful to
-            have you in our lives. We look forward to creating beautiful
-            memories together on our wedding day.{" "}
-            <span className="block text-right italic leading-loose">
-              With love, Sarah and Michael
-            </span>
-          </p>
-          <div className="mt-10 flex items-center justify-center gap-x-6">
+            We are overjoyed to share this special moment with you. 
+            `}
+          />
+          <Paragraph
+            content={
+              "Your love and support mean the world to us, and we are incredibly grateful to have you in our lives. We look forward to creating beautiful memories together on our wedding day. With love, Sarah and Michael"
+            }
+          />
+          <div className="mt-10 flex items-center  gap-x-6">
             <Button
               label={"RSVP"}
               type={"link"}
@@ -36,23 +36,11 @@ export const HeroSection = () => {
               action={"/rsvp"}
             />
           </div>
-          <div className="-ml-12 -mt-12 p-12 lg:sticky lg:top-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
-            <Image src={Chairs} />
-          </div>
+        </div>
+        <div className="max-w-full justify-self-center lg:sticky lg:top-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:-ml-12 lg:-mt-12 lg:justify-self-auto lg:overflow-hidden lg:p-12">
+          <Image src={Chairs} />
         </div>
       </div>
-      {/* <div
-        className="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
-        aria-hidden="true"
-      >
-        <div
-          className="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]"
-          style={{
-            clipPath:
-              "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
-          }}
-        />
-      </div> */}
     </section>
   );
 };
