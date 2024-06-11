@@ -3,13 +3,13 @@ import { Accordion } from "../components/Accordion";
 
 export const Faq = () => {
   return (
-    <section className="relative isolate overflow-hidden bg-transparent px-6 py-8 sm:py-4 lg:overflow-visible lg:px-0">
+    <section className="relative isolate overflow-hidden bg-transparent lg:overflow-visible lg:px-0">
       <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-4 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-start lg:gap-y-10">
-        <div className="p-12 md:-ml-12 lg:sticky lg:top-8 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
+        <div className="md:-ml-12 lg:sticky lg:top-8 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:overflow-hidden lg:p-12">
           <div className="lg:pr-4">
             <div className="lg:max-w-lg">
               <Heading content={"FAQ"} level={2} />
-              <p className="text-primary mt-6 font-cormorant text-xl font-light leading-8 ">
+              <p className="mt-6 font-cormorant text-xl font-light leading-8 text-primary ">
                 Here are some good-to-know things, to help you prepare for our
                 special day.
               </p>

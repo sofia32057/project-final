@@ -19,7 +19,7 @@ export const Accordion = () => {
               key={q.question}
             >
               <DisclosureButton className="group flex w-full items-center justify-between text-left">
-                <span className="text-sm/6 font-medium group-data-[hover]:text-white/80">
+                <span className="group-data-[hover]:text-primary/80 text-sm/6 font-medium">
                   {q.question}
                 </span>
                 <ChevronDownIcon className="group-data-[hover]:fill-gray/50 fill-gray/60 size-5 group-data-[open]:rotate-180" />
