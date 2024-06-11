@@ -1,7 +1,4 @@
 import { CarouselCard } from "./CarouselCard";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import { NextArrow, PrevArrow } from "./CustomArrows";
 import Terrasse from "/anastasia-saldatava-DZp5uVfRneI-unsplash.jpg";
 import Garden from "/anastasia-saldatava-oNMk0OOul80-unsplash.jpg";
@@ -9,6 +6,9 @@ import Landscape from "/doozydoom-_v5HCKSZOkA-unsplash.jpg";
 import DinnerView from "/flo-p-pUor_oQHEG4-unsplash.jpg";
 import HouseTerrasse from "/mattia-bericchia-fSfgZCofQz0-unsplash.jpg";
 import Pool from "/nick-george-cCb5SMpxusA-unsplash.jpg";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 export const Carousel = () => {
   const settings = {
