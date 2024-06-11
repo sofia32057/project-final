@@ -15,9 +15,11 @@ export const Carousel = () => {
     dots: true,
     infinite: true,
     speed: 500,
-    centerPadding: "20px",
+    centerPadding: "15px",
     slidesToShow: 3,
     slidesToScroll: 3,
+    swipeToSlide: true,
+    lazyLoad: true,
     centerMode: true,
     useTransform: true,
     nextArrow: <NextArrow />,
@@ -25,23 +27,6 @@ export const Carousel = () => {
     appendDots: (dots) => (
       <div style={{ borderRadius: "10px", color: "#451E2C" }}>
         <ul style={{ margin: "0px" }}> {dots} </ul>
-      </div>
-    ),
-    customPaging: (i) => (
-      <div
-        style={{
-          width: "10px",
-          height: "10px",
-          borderRadius: "50%",
-          background: "#451E2C",
-          color: "#451E2C",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          fontSize: "12px",
-        }}
-      >
-        {i + 1}
       </div>
     ),
     responsive: [

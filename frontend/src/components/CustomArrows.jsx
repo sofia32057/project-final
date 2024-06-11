@@ -1,13 +1,17 @@
+import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
+
 export const NextArrow = (props) => {
   const { className, style, onClick } = props;
   return (
-    <div
+    <ChevronRightIcon
       className={className}
       style={{
         ...style,
         display: "block",
-        borderRadius: "50%",
-        background: "#451E2C",
+        height: "45px",
+        width: "30px",
+        color: "#451E2C",
+        zIndex: "5",
       }}
       onClick={onClick}
     />
@@ -17,13 +21,15 @@ export const NextArrow = (props) => {
 export const PrevArrow = (props) => {
   const { className, style, onClick } = props;
   return (
-    <div
+    <ChevronLeftIcon
       className={className}
       style={{
         ...style,
         display: "block",
-        borderRadius: "50%",
-        background: "#451E2C",
+        height: "45px",
+        width: "30px",
+        color: "#451E2C",
+        zIndex: "5",
       }}
       onClick={onClick}
     />
