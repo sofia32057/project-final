@@ -66,7 +66,7 @@ export const Carousel = () => {
   };
 
   return (
-    <Slider {...settings} className=" my-6 max-w-5xl">
+    <Slider {...settings} className=" mx-auto my-6 md:max-w-3xl lg:max-w-5xl">
       <CarouselCard src={Terrasse} alt={"Terrasse with a view"} />
       <CarouselCard src={Landscape} alt={"Landscape of Tuscany"} />
       <CarouselCard src={DinnerView} alt={"Dinner table with a view"} />
