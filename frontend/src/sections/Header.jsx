@@ -8,12 +8,12 @@ import { HashLink } from "react-router-hash-link";
 
 const navigation = [
   { name: "Info", href: "/" },
-  { name: "RSVP", href: "/rsvp" },
   { name: "Schedule", href: "/#schedule" },
   { name: "Venue", href: "/#venue" },
   { name: "Accomodations", href: "/#accomodation" },
   { name: "FAQ", href: "/#faq" },
   { name: "Our story", href: "/#story" },
+  // { name: "RSVP", href: "/rsvp" },
   // { name: "My Attendance", href: "/my-attendance" },
 ];
 
@@ -35,9 +35,9 @@ export const Header = () => {
 
   return (
     <header
-      className={`sticky top-0 ${scroll} z-50 flex justify-center px-2 py-2`}
+      className={`sticky top-0 ${scroll} z-50 flex w-full justify-center`}
     >
-      <div className="relative inset-x-0 top-0 w-full">
+      <div className="relative inset-x-0 top-0 mx-2 my-2 w-full max-w-screen-xl">
         <nav
           className="flex items-center justify-between p-6 lg:gap-x-12 lg:px-8"
           aria-label="Global"
@@ -66,7 +66,7 @@ export const Header = () => {
           {/* Hamburger end */}
 
           {/* Desktop menu start */}
-          <div className="hidden justify-end lg:flex lg:flex-1 lg:gap-x-12">
+          <div className="hidden items-center justify-end lg:flex lg:flex-1 lg:gap-x-12">
             {isLoggedIn &&
               navigation.map((item) =>
                 item.href.includes("#") ? (
@@ -87,8 +87,14 @@ export const Header = () => {
                   </NavLink>
                 ),
               )}
+            <Button
+              label={"RSVP"}
+              type={"link"}
+              style={"primary"}
+              action={"/rsvp"}
+            />
           </div>
-          <div className="hidden lg:flex  lg:justify-end">
+          <div className="hidden lg:flex lg:justify-end">
             {isLoggedIn ? (
               <Button
                 label={"Log out"}
@@ -137,15 +143,27 @@ export const Header = () => {
               <div className="divide-gray-500/10 -my-6 divide-y">
                 <div className="space-y-2 py-6">
                   {isLoggedIn &&
-                    navigation.map((item) => (
-                      <NavLink
-                        key={item.name}
-                        to={item.href}
-                        className="text-base text-gray-900 hover:bg-gray-50 -mx-3 block rounded-lg px-3 py-2 font-semibold leading-7"
-                      >
-                        {item.name}
-                      </NavLink>
-                    ))}
+                    navigation.map((item) =>
+                      item.href.includes("#") ? (
+                        <HashLink
+                          key={item.name}
+                          to={item.href}
+                          className="text-base text-gray-900 hover:bg-gray-50 -mx-3 block rounded-lg px-3 py-2 font-semibold leading-7"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          {item.name}
+                        </HashLink>
+                      ) : (
+                        <NavLink
+                          key={item.name}
+                          to={item.href}
+                          className="text-base text-gray-900 hover:bg-gray-50 -mx-3 block rounded-lg px-3 py-2 font-semibold leading-7"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          {item.name}
+                        </NavLink>
+                      ),
+                    )}
                 </div>
                 <div className="py-6">
                   {isLoggedIn ? (
