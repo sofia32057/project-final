@@ -13,28 +13,29 @@
     font-family: Cormorant;
     src: url(./assets/Cormorant-VariableFont_wght.ttf);
   }
-body {
-  @apply flex flex-col items-center w-full
-}
+  body {
+    @apply flex w-full flex-col items-center;
+  }
 
   #root {
-    @apply text-text w-full flex flex-col items-center
+    @apply flex w-full flex-col items-center text-text;
   }
 
   main {
-    @apply max-w-screen-xl
+    @apply max-w-screen-xl overflow-x-clip;
   }
 
-  h1,h2,h3 {
-    @apply font-cormorant
+  h1,
+  h2,
+  h3 {
+    @apply font-cormorant;
   }
 
   a:hover {
-    @apply 
-      underline cursor-pointer
+    @apply cursor-pointer underline;
   }
 
   section {
-    @apply px-6 py-8 sm:py-4
+    @apply px-6 py-8 sm:py-4;
   }
 }
