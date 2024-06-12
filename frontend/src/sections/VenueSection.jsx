@@ -4,7 +4,10 @@ import { MapPinIcon, RocketLaunchIcon } from "@heroicons/react/24/outline";
 
 export const VenueSection = () => {
   return (
-    <section className="grid px-6 py-8 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-start">
+    <section
+      id="venue"
+      className="grid px-6 py-8 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-start"
+    >
       <div className="lg:col-start-1 lg:row-end-2 lg:px-8">
         <Heading
           content={"The Wedding Venue"}

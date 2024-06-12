@@ -37,7 +37,7 @@ export const HeroSection = () => {
             />
           </div>
         </div>
-        <div className="max-w-full justify-self-center lg:sticky lg:top-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:-ml-12 lg:-mt-12 lg:justify-self-auto lg:overflow-hidden lg:p-12">
+        <div className="max-w-full justify-self-center lg:sticky lg:top-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:-ml-12 lg:-mt-12 lg:justify-self-auto lg:overflow-visible lg:p-12">
           <Image src={Chairs} />
         </div>
       </div>

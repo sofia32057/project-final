@@ -13,8 +13,12 @@
     font-family: Cormorant;
     src: url(./assets/Cormorant-VariableFont_wght.ttf);
   }
-  :root {
-    @apply text-text;
+body {
+  @apply flex flex-col items-center overflow-x-hidden
+}
+
+  #root {
+    @apply text-text max-w-screen-xl  ;
   }
 
   h1,h2,h3 {
