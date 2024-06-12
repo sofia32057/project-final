@@ -10,13 +10,14 @@ export const RsvpForm = () => {
   const guestData = useStore((state) => state.guestData);
   const updateGuest = useStore((state) => state.updateGuest);
   const setGuestData = useStore((state) => state.setGuestData);
+  const [selectedRadio, setSelectedRadio] = useState(null);
   const [plusOne, setPlusOne] = useState(false);
   const [rsvp, setRsvp] = useState({
     speech: {
       willMakeSpeech: false,
     },
     foodChoice: "Select",
-    willAttend: false,
+    willAttend: null,
     plusOne: {
       name: "",
       foodChoice: "Select",
@@ -44,7 +45,7 @@ export const RsvpForm = () => {
   const handleChange = (event) => {
     checkGuest();
     const { name, value, type, checked } = event.target;
-    const answer = type === "checkbox" ? checked : value;
+    const answer = type === "radio" ? checked : value;
     setRsvp({ ...rsvp, [name]: answer });
   };
   // Handle change for nested object
@@ -73,15 +74,32 @@ export const RsvpForm = () => {
               <legend className="text-base text-gray-900 font-semibold leading-7">
                 My RSVP
               </legend>
-              <div className="mt-6 space-y-6">
+              <div className="mt-6 space-y-4">
                 <Input
                   label={"I will attend"}
                   id={"will-attend"}
                   name={"willAttend"}
                   value={rsvp.willAttend}
-                  type={"checkbox"}
+                  type={"radio"}
                   onChange={handleChange}
                 />
+                <Input
+                  label={"I cannot attend"}
+                  id={"not-attend"}
+                  name={"notAttend"}
+                  value={!rsvp.willAttend}
+                  type={"radio"}
+                  onChange={handleChange}
+                />
+
+                {/* If not attending */}
+                {rsvp.willAttend === false && (
+                  <div className="mt-10 space-y-10">
+                    <p className="text-gray-600 mt-1 text-sm leading-6">
+                      We're sorry you can't make it. You'll be missed.
+                    </p>
+                  </div>
+                )}
 
                 {rsvp.willAttend && (
                   <>
