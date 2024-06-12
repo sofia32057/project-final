@@ -18,10 +18,12 @@ export const VenueSection = () => {
         </div>
         <div className="pt-6 md:pt-10 lg:sticky lg:top-8 lg:row-span-2 lg:overflow-hidden">
           <Map />
-          <p className="inline-flex gap-2 py-4 md:items-center md:justify-center">
-            <MapPinIcon className="h-8 w-8" /> Venue address: Castelnuovo
-            Tancredi, 53022 Buonconvento SI, Italy
-          </p>
+          <div className="flex items-center justify-center py-4">
+            <MapPinIcon className="mr-2 h-8 w-8" />
+            <p className="text-center">
+              Venue address: Castelnuovo Tancredi, 53022 Buonconvento SI, Italy
+            </p>
+          </div>
         </div>
         <div className="lg:px-8">
           <Heading content={content["h2-1"]} level={3} />
