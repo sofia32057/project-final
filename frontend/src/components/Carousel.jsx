@@ -17,7 +17,7 @@ export const Carousel = () => {
     speed: 500,
     centerPadding: "15px",
     slidesToShow: 3,
-    slidesToScroll: 3,
+    slidesToScroll: 1,
     swipeToSlide: true,
     lazyLoad: true,
     centerMode: true,
@@ -53,7 +53,7 @@ export const Carousel = () => {
   return (
     <Slider
       {...settings}
-      className=" px-auto mx-4 my-6 md:mx-auto md:max-w-3xl lg:max-w-5xl"
+      className="px-auto mx-4 my-6 w-full md:mx-auto md:max-w-3xl lg:max-w-5xl"
     >
       <CarouselCard src={Terrasse} alt={"Terrasse with a view"} />
       <CarouselCard src={Landscape} alt={"Landscape of Tuscany"} />
