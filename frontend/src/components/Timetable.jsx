@@ -3,7 +3,7 @@ import { Icon } from "./Icon";
 
 export const Timetable = () => {
   return (
-    <div className="-my-4 mx-auto mt-8 flow-root max-w-3xl divide-y divide-accent md:mt-12 lg:mt-16">
+    <div className="-my-4 mx-auto mt-8 flow-root max-w-3xl divide-y divide-white md:mt-12 lg:mt-16">
       {schedule.map((t) => {
         return (
           <div

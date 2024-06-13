@@ -8,6 +8,7 @@ export default {
       md: "744px",
       lg: "1024px",
       xl: "1440px",
+      xxl: "1441px",
     },
     colors: {
       transparent: "transparent",
