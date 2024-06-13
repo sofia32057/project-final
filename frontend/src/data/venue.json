@@ -2,10 +2,18 @@
   "h1": "The Wedding Venue",
   "pre": "Where forever starts",
   "intro": "To reach Castelnuovo Tancredi in Buonconvento, Italy, you can start from any major city in Italy.",
-  "h2-1": "By car",
-  "content1": "By car, head in the direction of Tuscany, following signs that lead you toward Siena. Once you are near Siena, continue driving towards Buonconvento. As you get closer, look for signs or ask locals for directions to Castelnuovo Tancredi.",
-  "h2-2": "By bike",
-  "content2": "If you prefer to bike, begin your journey in Tuscany. Follow the scenic routes that lead towards the countryside, making your way to Buonconvento. Along the way, enjoy the beautiful landscapes and seek guidance from locals as you approach Castelnuovo Tancredi.",
-  "h2-3": "By plane",
-  "content3": "For those traveling by plane, book a flight to a major Italian airport such as Rome, Florence, or Pisa. After arriving, take local transportation such as a train or bus towards Siena. From Siena, find your way to Buonconvento through additional local transport options. Once in Buonconvento, you can arrange for a local taxi or ask for directions to Castelnuovo Tancredi."
+  "transportation": [
+    {
+      "h2": "By car",
+      "text": "By car, head in the direction of Tuscany, following signs that lead you toward Siena. Once you are near Siena, continue driving towards Buonconvento. As you get closer, look for signs or ask locals for directions to Castelnuovo Tancredi."
+    },
+    {
+      "h2": "By bike",
+      "text": "If you prefer to bike, begin your journey in Tuscany. Follow the scenic routes that lead towards the countryside, making your way to Buonconvento. Along the way, enjoy the beautiful landscapes and seek guidance from locals as you approach Castelnuovo Tancredi."
+    },
+    {
+      "h2": "By plane",
+      "text": "For those traveling by plane, book a flight to a major Italian airport such as Rome, Florence, or Pisa. After arriving, take local transportation such as a train or bus towards Siena. From Siena, find your way to Buonconvento through additional local transport options. Once in Buonconvento, you can arrange for a local taxi or ask for directions to Castelnuovo Tancredi."
+    }
+  ]
 }
