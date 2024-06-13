@@ -24,5 +24,5 @@ const iconMapping = {
 
 export const Icon = ({ activity }) => {
   const IconComponent = iconMapping[activity] || BuildingLibraryIcon; // default icon if activity not found
-  return <IconComponent className="mx-2 h-6 w-6 self-center" />;
+  return <IconComponent className=" mx-auto h-7 w-7 self-center" />;
 };
