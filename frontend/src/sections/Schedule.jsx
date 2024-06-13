@@ -1,16 +1,5 @@
 import { Heading } from "../components/Heading";
 import { Timetable } from "../components/Timetable";
-import {
-  BuildingLibraryIcon,
-  HeartIcon,
-  FaceSmileIcon,
-  SparklesIcon,
-  GiftTopIcon,
-  CakeIcon,
-  MusicalNoteIcon,
-  StarIcon,
-  GlobeAltIcon,
-} from "@heroicons/react/24/outline";
 
 export const Schedule = () => {
   return (

@@ -1,4 +1,5 @@
 import { schedule } from "../data/schedule.json";
+import { Icon } from "./Icon";
 
 export const Timetable = () => {
   return (
@@ -13,6 +14,7 @@ export const Timetable = () => {
               {t.time}
             </p>
             <h3 className="inline-flex gap-3 text-md font-semibold text-text md:text-lg">
+              <Icon activity={t.activity} />
               {t.activity}
             </h3>
           </div>
