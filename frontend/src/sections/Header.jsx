@@ -7,7 +7,7 @@ import { Button } from "../components/Button";
 import { HashLink } from "react-router-hash-link";
 
 const navigation = [
-  { name: "Info", href: "/" },
+  // { name: "Info", href: "/" },
   { name: "Schedule", href: "/#schedule" },
   { name: "Venue", href: "/#venue" },
   { name: "Accomodations", href: "/#accomodation" },
