@@ -15,6 +15,7 @@ const navigation = [
   { name: "Our story", href: "/#story" },
   // { name: "RSVP", href: "/rsvp" },
   // { name: "My Attendance", href: "/my-attendance" },
+  { name: "Message board", href: "/messageboard" },
 ];
 
 export const Header = () => {

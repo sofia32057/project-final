@@ -20,6 +20,7 @@ export default {
       background: " #DDD7C6",
     },
     fontSize: {
+      xs: ["12px", { fontWeight: "200" }],
       sm: ["16px", { fontWeight: "400" }],
       md: ["20px", { fontWeight: "400" }],
       "md-bold": ["20px", { fontWeight: "700" }],

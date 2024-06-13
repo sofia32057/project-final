@@ -8,6 +8,7 @@ import { useStore } from "../stores/useStore";
 const { Homepage } = lazily(() => import("./pages/Homepage"));
 const { LandingPage } = lazily(() => import("./pages/LandingPage"));
 const { RsvpPage } = lazily(() => import("./pages/RsvpPage"));
+const { Messageboard } = lazily(() => import("./pages/Messageboard"));
 
 export const App = () => {
   const { isLoggedIn } = useStore();
@@ -41,6 +42,10 @@ export const App = () => {
         //   path: "/my-attendance/:guestId",
         //   element: <NotFound />,
         // },
+        {
+          path: "/messageboard",
+          element: <Messageboard />,
+        },
       ],
     },
   ]);
