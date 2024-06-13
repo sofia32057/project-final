@@ -10,7 +10,7 @@ export const LoginForm = () => {
     password: "",
   });
   const login = useStore((state) => state.login);
-  const isLoggedIn = useStore((state) => state.isLoggedIn);
+  const setGuestData = useStore((state) => state.setGuestData);
   const nav = useNavigate();
 
   // Handle Submit

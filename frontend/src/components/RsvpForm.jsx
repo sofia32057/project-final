@@ -7,9 +7,7 @@ import { Input } from "./Input";
 import { useNavigate } from "react-router-dom";
 
 export const RsvpForm = () => {
-  const guestData = useStore((state) => state.guestData);
   const updateGuest = useStore((state) => state.updateGuest);
-  const setGuestData = useStore((state) => state.setGuestData);
   const [plusOne, setPlusOne] = useState(false);
   const [rsvp, setRsvp] = useState({
     speech: {
@@ -25,12 +23,6 @@ export const RsvpForm = () => {
   const foodOptions = ["Select", "Meat", "Fish", "Vegan"];
   const nav = useNavigate();
 
-  // Check guest details
-  const checkGuest = () => {
-    setGuestData();
-    console.log("check", guestData);
-  };
-
   // Handle Submit
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -42,7 +34,7 @@ export const RsvpForm = () => {
 
   // Handle change in the form
   const handleChange = (event) => {
-    checkGuest();
+    console.log(event.target);
     const { name, value, type, checked } = event.target;
     const answer = type === "checkbox" ? checked : value;
     setRsvp({ ...rsvp, [name]: answer });
@@ -57,10 +49,6 @@ export const RsvpForm = () => {
       [name[0]]: { ...rsvp[name[0]], [name[1]]: answer },
     });
   };
-
-  useEffect(() => {
-    checkGuest();
-  }, []);
 
   return (
     <form onSubmit={handleSubmit}>
@@ -78,12 +66,20 @@ export const RsvpForm = () => {
                   label={"I will attend"}
                   id={"will-attend"}
                   name={"willAttend"}
-                  value={rsvp.willAttend}
-                  type={"checkbox"}
+                  value={true}
+                  type={"radio"}
+                  onChange={handleChange}
+                />
+                <Input
+                  label={"I will not attend"}
+                  id={"will-not-attend"}
+                  name={"willAttend"}
+                  value={false}
+                  type={"radio"}
                   onChange={handleChange}
                 />
 
-                {rsvp.willAttend && (
+                {rsvp.willAttend === "true" && (
                   <>
                     {
                       <Input
@@ -116,7 +112,7 @@ export const RsvpForm = () => {
           </div>
 
           {/* PLUS ONE */}
-          {rsvp.willAttend && (
+          {rsvp.willAttend === "true" && (
             <div className="mt-10 space-y-10">
               <fieldset id="attending" className="border-gray-300">
                 <legend className="text-base text-gray-900 font-semibold leading-7">

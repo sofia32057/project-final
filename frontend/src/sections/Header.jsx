@@ -25,7 +25,7 @@ export const Header = () => {
 
   const listenScrollEvent = () => {
     window.scrollY > 40
-      ? setScroll("bg-[#FFFFFF] shadow-xl")
+      ? setScroll("bg-[#FFFFFF] shadow-md")
       : setScroll("bg-transparent");
   };
 

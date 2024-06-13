@@ -1,9 +1,8 @@
-import { useStore } from "zustand";
+import { useStore } from "../../stores/useStore";
 import { Heading } from "../components/Heading";
 import { Button } from "../components/Button";
 
 export const Confirmation = () => {
-  // const isAttending = useStore((state) => state.guestData.isAttending);
   return (
     <section className="grid min-h-full place-items-center bg-white px-6 py-24 sm:py-32 lg:px-8">
       <div className="text-center">
@@ -12,7 +11,7 @@ export const Confirmation = () => {
           level={1}
           pre={"Confirmation"}
         />
-        <p className="text-base mt-6 leading-7 text-gray-600">
+        <p className="text-base text-gray-600 mt-6 leading-7">
           This text is supposed to change depending on your answer. We haven't
           fixed that yet 🤷‍♀️
         </p>
