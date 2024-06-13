@@ -35,7 +35,7 @@ export const Header = () => {
 
   return (
     <header
-      className={`sticky top-0 ${scroll} z-50 flex w-full justify-center`}
+      className={`sticky top-0 ${scroll} z-50 flex w-full justify-center font-cormorant`}
     >
       <div className="relative inset-x-0 top-0 mx-2 my-2 w-full max-w-screen-xl">
         <nav
@@ -45,7 +45,7 @@ export const Header = () => {
           <div className="flex lg:flex-1">
             <Link
               href="/"
-              className="text-base -m-1.5 p-1.5 font-cormorant font-semibold leading-7 text-primary md:text-lg "
+              className="text-base -m-1.5 p-1.5 font-semibold leading-7 text-primary hover:no-underline md:text-lg"
             >
               <span className="sr-only">Project wedding site</span>
               Sarah & Michael's wedding
@@ -73,7 +73,7 @@ export const Header = () => {
                   <HashLink
                     key={item.name}
                     to={item.href}
-                    className="text-nowrap text-sm font-semibold leading-6 text-primary active:text-secondary"
+                    className="text-nowrap text-sm font-semibold leading-6 text-primary hover:text-secondary active:text-secondary"
                   >
                     {item.name}
                   </HashLink>
@@ -142,6 +142,12 @@ export const Header = () => {
             <div className="mt-6 flow-root">
               <div className="divide-gray-500/10 -my-6 divide-y">
                 <div className="space-y-2 py-6">
+                  <Button
+                    label={"RSVP"}
+                    type={"link"}
+                    style={"primary"}
+                    action={"/rsvp"}
+                  />
                   {isLoggedIn &&
                     navigation.map((item) =>
                       item.href.includes("#") ? (
@@ -171,7 +177,10 @@ export const Header = () => {
                       label={"Log out"}
                       type={"button"}
                       style={"text"}
-                      action={logout}
+                      action={() => {
+                        logout();
+                        setMobileMenuOpen(false);
+                      }}
                     />
                   ) : (
                     <Button
