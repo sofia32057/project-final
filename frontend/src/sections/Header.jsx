@@ -40,7 +40,7 @@ export const Header = () => {
     >
       <div className="relative inset-x-0 top-0 mx-2 my-2 w-full max-w-screen-xl">
         <nav
-          className="flex items-center justify-between p-6 lg:gap-x-12 lg:px-8"
+          className="flex items-center justify-between p-2 lg:gap-x-12 lg:px-8"
           aria-label="Global"
         >
           <div className="flex lg:flex-1">
