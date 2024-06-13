@@ -1,14 +1,15 @@
-import { Heading } from "./Heading";
+import { Heading } from "../components/Heading";
+import { Timetable } from "../components/Timetable";
 import {
   BuildingLibraryIcon,
-  SparklesIcon,
-  FaceSmileIcon,
-  CakeIcon,
-  GiftTopIcon,
-  MusicalNoteIcon,
-  GlobeAltIcon,
   HeartIcon,
+  FaceSmileIcon,
+  SparklesIcon,
+  GiftTopIcon,
+  CakeIcon,
+  MusicalNoteIcon,
   StarIcon,
+  GlobeAltIcon,
 } from "@heroicons/react/24/outline";
 
 export const Schedule = () => {
@@ -18,8 +19,8 @@ export const Schedule = () => {
         <div className="mx-auto max-w-3xl text-left">
           <Heading content={"Schedule of our day"} level={2} pre={""} />
         </div>
-
-        <div className="mx-auto mt-8 flow-root max-w-3xl md:mt-12 lg:mt-16">
+        <Timetable />
+        {/* <div className="mx-auto mt-8 flow-root max-w-3xl md:mt-12 lg:mt-16">
           <div className="-my-4 divide-y divide-accent">
             <div className="flex flex-row items-center gap-6 px-2 py-4 md:gap-10">
               <p className="w-30 mx-4 shrink-0 self-center text-md font-normal text-text sm:text-right md:text-lg">
@@ -111,7 +112,7 @@ export const Schedule = () => {
               </h3>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );

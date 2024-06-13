@@ -1,6 +1,6 @@
 import { HeroSection } from "../sections/HeroSection";
 import { FishtankSection } from "../sections/FishtankSection";
-import { Schedule } from "../components/Schedule";
+import { Schedule } from "../sections/Schedule";
 import { VenueSection } from "../sections/VenueSection";
 import { Footer } from "../sections/Footer";
 import { CoupleStory } from "../sections/CoupleStory";

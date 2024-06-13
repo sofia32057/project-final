@@ -1,0 +1,40 @@
+{
+  "schedule": [
+    {
+      "time": "15:30",
+      "activity": "Arrival and Seating"
+    },
+    {
+      "time": "16:00",
+      "activity": "Wedding Ceremony"
+    },
+    {
+      "time": "16:30",
+      "activity": "Cocktail Hour"
+    },
+    {
+      "time": "18:00",
+      "activity": "Grand Entrance"
+    },
+    {
+      "time": "18:15",
+      "activity": "Dinner Service"
+    },
+    {
+      "time": "19:45",
+      "activity": "Cake Cutting"
+    },
+    {
+      "time": "20:00",
+      "activity": "First Dances"
+    },
+    {
+      "time": "23:00",
+      "activity": "Grand Exit"
+    },
+    {
+      "time": "23:15",
+      "activity": "After Party"
+    }
+  ]
+}
