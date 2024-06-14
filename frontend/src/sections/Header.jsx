@@ -86,14 +86,15 @@ export const Header = () => {
                     {item.name}
                   </NavLink>
                 ),
-              )(
-                <Button
-                  label={"RSVP"}
-                  type={"link"}
-                  style={"primary"}
-                  action={"/rsvp"}
-                />,
               )}
+            {isLoggedIn && (
+              <Button
+                label={"RSVP"}
+                type={"link"}
+                style={"primary"}
+                action={"/rsvp"}
+              />
+            )}
           </div>
           <div className="hidden lg:flex lg:justify-end">
             {isLoggedIn ? (
@@ -143,33 +144,34 @@ export const Header = () => {
             <div className="mt-6 flow-root">
               <div className="divide-gray-500/10 -my-6 divide-y">
                 <div className="space-y-2 py-6">
-                  {isLoggedIn &&
-                    (<Button
+                  {isLoggedIn && (
+                    <Button
                       label={"RSVP"}
                       type={"link"}
                       style={"primary"}
                       action={"/rsvp"}
-                    />)(
-                      navigation.map((item) =>
-                        item.href.includes("#") ? (
-                          <HashLink
-                            key={item.name}
-                            to={item.href}
-                            className="text-base text-gray-900 hover:bg-gray-50 -mx-3 block rounded-lg px-3 py-2 font-semibold leading-7"
-                            onClick={() => setMobileMenuOpen(false)}
-                          >
-                            {item.name}
-                          </HashLink>
-                        ) : (
-                          <NavLink
-                            key={item.name}
-                            to={item.href}
-                            className="text-base text-gray-900 hover:bg-gray-50 -mx-3 block rounded-lg px-3 py-2 font-semibold leading-7"
-                            onClick={() => setMobileMenuOpen(false)}
-                          >
-                            {item.name}
-                          </NavLink>
-                        ),
+                    />
+                  )}
+                  {isLoggedIn &&
+                    navigation.map((item) =>
+                      item.href.includes("#") ? (
+                        <HashLink
+                          key={item.name}
+                          to={item.href}
+                          className="text-base text-gray-900 hover:bg-gray-50 -mx-3 block rounded-lg px-3 py-2 font-semibold leading-7"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          {item.name}
+                        </HashLink>
+                      ) : (
+                        <NavLink
+                          key={item.name}
+                          to={item.href}
+                          className="text-base text-gray-900 hover:bg-gray-50 -mx-3 block rounded-lg px-3 py-2 font-semibold leading-7"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          {item.name}
+                        </NavLink>
                       ),
                     )}
                 </div>
