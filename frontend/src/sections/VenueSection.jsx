@@ -26,12 +26,14 @@ export const VenueSection = () => {
           </div>
         </div>
         <div className="lg:px-8">
-          <Heading content={content["h2-1"]} level={3} />
-          <Paragraph content={content.content1} />
-          <Heading content={content["h2-2"]} level={3} />
-          <Paragraph content={content.content2} />
-          <Heading content={content["h2-3"]} level={3} />
-          <Paragraph content={content.content3} />
+          {content.transportation.map((t) => {
+            return (
+              <div key={t.h2}>
+                <Heading content={t.h2} level={3} />
+                <Paragraph content={t.text} />
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

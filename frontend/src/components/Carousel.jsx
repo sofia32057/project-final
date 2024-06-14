@@ -1,11 +1,11 @@
 import { CarouselCard } from "./CarouselCard";
 import { NextArrow, PrevArrow } from "./CustomArrows";
-import Terrasse from "/anastasia-saldatava-DZp5uVfRneI-unsplash.jpg";
-import Garden from "/anastasia-saldatava-oNMk0OOul80-unsplash.jpg";
-import Landscape from "/doozydoom-_v5HCKSZOkA-unsplash.jpg";
-import DinnerView from "/flo-p-pUor_oQHEG4-unsplash.jpg";
-import HouseTerrasse from "/mattia-bericchia-fSfgZCofQz0-unsplash.jpg";
-import Pool from "/nick-george-cCb5SMpxusA-unsplash.jpg";
+import Terrasse from "/anastasia-saldatava-DZp5uVfRneI-unsplash.webp";
+import Garden from "/anastasia-saldatava-oNMk0OOul80-unsplash.webp";
+import Landscape from "/doozydoom-_v5HCKSZOkA-unsplash.webp";
+import DinnerView from "/flo-p-pUor_oQHEG4-unsplash.webp";
+import HouseTerrasse from "/mattia-bericchia-fSfgZCofQz0-unsplash.webp";
+import Pool from "/nick-george-cCb5SMpxusA-unsplash.webp";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
