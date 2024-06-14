@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useStore } from "../../stores/useStore";
 import { Heading } from "./Heading";
 import { Button } from "./Button";
+import { Intro } from "./Intro";
 
 export const LoginForm = () => {
   const [userInput, setUserInput] = useState({
@@ -33,11 +34,10 @@ export const LoginForm = () => {
 
   return (
     <>
-      <div className=" flex flex-col justify-center px-6 py-10 md:py-16 lg:px-8">
+      <div className=" flex flex-col justify-center px-6 py-4 md:py-8 lg:px-8">
         <div className="mx-auto w-full max-w-sm">
-          <Heading
+          <Intro
             content={"Log in with your invitation to see wedding information"}
-            level={2}
           />
         </div>
 
