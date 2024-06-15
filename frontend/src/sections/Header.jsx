@@ -106,7 +106,7 @@ export const Header = () => {
                 style={"text"}
                 handler={() => {
                   setMobileMenuOpen(false);
-                  logout;
+                  logout();
                   nav("/");
                 }}
               />
