@@ -162,67 +162,9 @@ export const RsvpForm = () => {
           )}
         </div>
         {/* End of RSVP section */}
-
-        {/* About the guest
-        <div className="border-gray-900/10 border-b pb-12">
-          <h2 className="text-base text-gray-900 font-semibold leading-7">
-            Guest Profile
-          </h2>
-          <p className="text-gray-600 mt-1 text-sm leading-6">
-            This information will be displayed publicly so be careful what you
-            share.
-          </p>
-
-          <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-            <div className="col-span-full">
-              <label
-                htmlFor="about"
-                className="text-gray-900 block text-sm font-medium leading-6"
-              >
-                About
-              </label>
-              <div className="mt-2">
-                <textarea
-                  id="about"
-                  name="about"
-                  rows={3}
-                  className="text-gray-900 ring-gray-300 placeholder:text-gray-400 focus:ring-indigo-600 block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
-                  defaultValue={""}
-                />
-              </div>
-              <p className="text-gray-600 mt-3 text-sm leading-6">
-                Write a few sentences about yourself.
-              </p>
-            </div>
-
-            <div className="col-span-full">
-              <label
-                htmlFor="photo"
-                className="text-gray-900 block text-sm font-medium leading-6"
-              >
-                Photo
-              </label>
-              <div className="mt-2 flex items-center gap-x-3">
-                <Icon className="text-gray-300 h-12 w-12" aria-hidden="true" />
-                <Button
-                  type="primary"
-                  className="bg-white text-gray-900 ring-gray-300 hover:bg-gray-50 rounded-md px-2.5 py-1.5 text-sm font-semibold shadow-sm ring-1 ring-inset"
-                  text="Change"
-                />
-              </div>
-            </div>
-          </div>
-        </div> */}
       </div>
 
       <div className="mt-6 flex items-center justify-end gap-x-6">
-        {/* <button
-          type="button"
-          className="text-sm font-semibold leading-6 text-gray-900"
-        >
-          Cancel
-        </button> */}
-
         <Button label={"Save"} type={"button"} style={"login"} />
       </div>
     </form>

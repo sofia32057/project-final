@@ -87,12 +87,6 @@ export const LoginForm = () => {
 
             <div>
               <Button label={"Log in"} type={"button"} style={"login"} />
-              {/* <button
-                type="submit"
-                className="text-base flex w-full items-center justify-center rounded-md bg-background px-4 py-2.5 font-cormorant font-semibold shadow-md hover:bg-accent hover:outline-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
-              >
-                Sign in
-              </button> */}
             </div>
           </form>
 

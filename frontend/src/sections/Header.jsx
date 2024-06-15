@@ -1,4 +1,4 @@
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, useNavigate } from "react-router-dom";
 import { useStore } from "../../stores/useStore";
 import { useEffect, useState } from "react";
 import { Dialog, DialogPanel } from "@headlessui/react";
@@ -22,6 +22,7 @@ export const Header = () => {
   const isLoggedIn = useStore((state) => state.isLoggedIn);
   const logout = useStore((state) => state.logout);
   const [scroll, setScroll] = useState("bg-transparent");
+  const nav = useNavigate();
 
   const listenScrollEvent = () => {
     window.scrollY > 40
@@ -45,7 +46,7 @@ export const Header = () => {
           <div className="flex lg:flex-1">
             <Link
               href="/"
-              className="text-base -m-1.5 p-1.5 font-semibold leading-7 text-primary hover:no-underline md:text-lg"
+              className="text-base -m-1.5 p-1.5 font-semibold leading-7 text-primary hover:text-secondary hover:no-underline md:text-lg"
             >
               <span className="sr-only">Project wedding site</span>
               Sarah & Michael's wedding
@@ -66,7 +67,7 @@ export const Header = () => {
           {/* Hamburger end */}
 
           {/* Desktop menu start */}
-          <div className="hidden items-center justify-end lg:flex lg:flex-1 lg:gap-x-12">
+          <div className="hidden items-center justify-end lg:flex lg:flex-1 lg:gap-x-6">
             {isLoggedIn &&
               navigation.map((item) =>
                 item.href.includes("#") ? (
@@ -92,24 +93,30 @@ export const Header = () => {
                 label={"RSVP"}
                 type={"link"}
                 style={"primary"}
-                action={"/rsvp"}
+                href={"/rsvp"}
+                handler={() => setMobileMenuOpen(false)}
               />
             )}
           </div>
-          <div className="hidden lg:flex lg:justify-end">
+          <div className="hidden text-nowrap lg:flex lg:justify-end">
             {isLoggedIn ? (
               <Button
                 label={"Log out"}
                 type={"button"}
                 style={"text"}
-                action={logout}
+                handler={() => {
+                  setMobileMenuOpen(false);
+                  logout;
+                  nav("/");
+                }}
               />
             ) : (
               <Button
                 label={"Log in"}
                 type={"link"}
                 style={"text"}
-                action={"/login"}
+                href={"/login"}
+                handler={() => setMobileMenuOpen(false)}
               />
             )}
           </div>
@@ -143,17 +150,17 @@ export const Header = () => {
             </div>
             <div className="mt-6 flow-root">
               <div className="divide-gray-500/10 -my-6 divide-y">
-                <div className="space-y-2 py-6">
-                  {isLoggedIn && (
+                {isLoggedIn && (
+                  <div className="space-y-2 py-6">
                     <Button
                       label={"RSVP"}
                       type={"link"}
                       style={"primary"}
-                      action={"/rsvp"}
+                      href={"/rsvp"}
+                      handler={() => setMobileMenuOpen(false)}
                     />
-                  )}
-                  {isLoggedIn &&
-                    navigation.map((item) =>
+
+                    {navigation.map((item) =>
                       item.href.includes("#") ? (
                         <HashLink
                           key={item.name}
@@ -174,16 +181,18 @@ export const Header = () => {
                         </NavLink>
                       ),
                     )}
-                </div>
+                  </div>
+                )}
                 <div className="py-6">
                   {isLoggedIn ? (
                     <Button
                       label={"Log out"}
                       type={"button"}
                       style={"text"}
-                      action={() => {
+                      handler={() => {
                         logout();
                         setMobileMenuOpen(false);
+                        nav("/");
                       }}
                     />
                   ) : (
@@ -191,7 +200,8 @@ export const Header = () => {
                       label={"Log in"}
                       type={"link"}
                       style={"text"}
-                      action={"/login"}
+                      href={"/login"}
+                      handler={() => setMobileMenuOpen(false)}
                     />
                   )}
                 </div>
