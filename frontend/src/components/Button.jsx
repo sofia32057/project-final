@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export const Button = ({ label, type, style, action }) => {
+export const Button = ({ label, type, style, href, handler }) => {
   const styling = {
     primary:
       "bg-secondary text-white font-cormorant flex justify-center items-center hover:bg-background hover:outline-primary focus-visible:outline-primary rounded-md px-10 py-2.5 text-base font-semibold shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2",
@@ -13,13 +13,14 @@ export const Button = ({ label, type, style, action }) => {
     <>
       <div className="flex flex-1">
         {type === "button" ? (
-          <button className={styling[style]} onClick={action}>
+          <button className={styling[style]} onClick={handler}>
             {label}{" "}
             {style === "text" && <span aria-hidden="true"> &rarr;</span>}
           </button>
         ) : (
-          <Link to={action} className={styling[style]}>
-            {label} <span aria-hidden="true"> &rarr;</span>
+          <Link to={href} className={styling[style]} onClick={handler}>
+            {label}{" "}
+            {style === "text" && <span aria-hidden="true"> &rarr;</span>}
           </Link>
         )}
       </div>
