@@ -6,6 +6,7 @@ export const Guest = model("Guest", {
   accessToken: {
     type: String,
     default: () => bcrypt.genSaltSync(),
+    required: true,
   },
   firstname: {
     type: String,

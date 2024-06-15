@@ -7,6 +7,7 @@ import bcrypt from "bcrypt";
 import { Guest } from "./models/GuestModel";
 import { authenticateUser } from "./middlewares/auth";
 import dotenv from "dotenv";
+
 dotenv.config();
 
 const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/our-wedding";
