@@ -12,6 +12,7 @@ export const useStore = create(
       token: "",
       isLoggedIn: false,
       guestId: "",
+      attendingGuests: [],
 
       // Login fetch
       login: (userInput, callback) =>
@@ -65,6 +66,32 @@ export const useStore = create(
           }
         }),
 
+      // Fetch data for logged in user
+      setAttendingGuests: () =>
+        set(async (state) => {
+          try {
+            const response = await fetch(`${API_URL}/guests`, {
+              method: "GET",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: state.token,
+              },
+            });
+            if (!response.ok) {
+              console.log(response);
+              throw new Error("Error fetching data");
+            }
+            const data = await response.json();
+            const guests = await data.filter(
+              (guest) => guest.willAttend == true,
+            );
+            set(() => ({
+              attendingGuests: guests,
+            }));
+          } catch (error) {
+            throw new Error("Error fetching data: ", error);
+          }
+        }),
       // Fetch data for logged in user
       setGuestData: () =>
         set(async (state) => {

@@ -4,13 +4,12 @@ import {
   DisclosurePanel,
 } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
-import { faq } from "../data/faq.json";
 
-export const Accordion = () => {
+export const Accordion = ({ content }) => {
   return (
     <div className="w-full px-4">
       <div className="mx-auto w-full max-w-lg divide-y divide-accent rounded-xl bg-white">
-        {faq.map((q) => {
+        {content.map((q) => {
           return (
             <Disclosure
               as="article"

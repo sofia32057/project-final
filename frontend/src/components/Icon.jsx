@@ -8,6 +8,7 @@ import {
   MusicalNoteIcon,
   StarIcon,
   GlobeAltIcon,
+  UserIcon,
 } from "@heroicons/react/24/outline";
 
 const iconMapping = {
@@ -20,6 +21,7 @@ const iconMapping = {
   "First Dances": MusicalNoteIcon,
   "Grand Exit": StarIcon,
   "After Party": GlobeAltIcon,
+  User: UserIcon,
 };
 
 export const Icon = ({ activity }) => {
