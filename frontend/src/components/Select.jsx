@@ -3,7 +3,7 @@ export const Select = ({ id, label, name, value, options, onChange }) => {
     <>
       <label
         htmlFor={id}
-        className="block text-sm font-medium leading-6 text-gray-900"
+        className="block text-sm font-medium leading-6 text-primary"
       >
         {label}
       </label>
@@ -12,9 +12,8 @@ export const Select = ({ id, label, name, value, options, onChange }) => {
           id={id}
           name={name}
           value={value}
-          autoComplete="none"
-          className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
-          onChange={onChange}
+          className="block w-full rounded-md border-0 py-1.5 text-primary shadow-sm ring-1 ring-inset ring-primary focus:ring-2 focus:ring-inset focus:ring-secondary sm:max-w-xs sm:text-sm sm:leading-6"
+          onChange={(event) => onChange(event)}
         >
           {options.map((op) => (
             <option key={op} value={op}>

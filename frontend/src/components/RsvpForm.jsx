@@ -1,23 +1,25 @@
 import { useEffect, useState } from "react";
 import { useStore } from "../../stores/useStore";
 import { Button } from "./Button";
-import { Icon } from "./Icon";
 import { Select } from "./Select";
 import { Input } from "./Input";
 import { useNavigate } from "react-router-dom";
 
 export const RsvpForm = () => {
+  const { setGuestData } = useStore();
+  // const setGuestData = useStore((state) => state.setGuestData);
+  const guestData = useStore((state) => state.guestdata);
   const updateGuest = useStore((state) => state.updateGuest);
   const [plusOne, setPlusOne] = useState(false);
   const [rsvp, setRsvp] = useState({
     speech: {
       willMakeSpeech: false,
     },
-    foodChoice: "Select",
+    foodChoice: "--",
     willAttend: false,
     plusOne: {
       name: "",
-      foodChoice: "Select",
+      foodChoice: "--",
     },
   });
   const foodOptions = ["Select", "Meat", "Fish", "Vegan"];
@@ -34,7 +36,6 @@ export const RsvpForm = () => {
 
   // Handle change in the form
   const handleChange = (event) => {
-    console.log(event.target);
     const { name, value, type, checked } = event.target;
     const answer = type === "checkbox" ? checked : value;
     setRsvp({ ...rsvp, [name]: answer });
@@ -49,6 +50,18 @@ export const RsvpForm = () => {
       [name[0]]: { ...rsvp[name[0]], [name[1]]: answer },
     });
   };
+
+  useEffect(() => {
+    setGuestData;
+  }, []);
+
+  useEffect(() => {
+    console.log(rsvp);
+  }, [rsvp]);
+
+  useEffect(() => {
+    console.log(guestData);
+  }, [setGuestData]);
 
   return (
     <form onSubmit={handleSubmit}>
@@ -98,8 +111,8 @@ export const RsvpForm = () => {
                         <Select
                           label={"My food preferences"}
                           id={"food-choice"}
-                          name={"food-choice"}
-                          value={rsvp.foodChoice}
+                          name={"foodChoice"}
+                          // value={""}
                           options={foodOptions}
                           onChange={handleChange}
                         />
@@ -149,9 +162,9 @@ export const RsvpForm = () => {
                           label={"Their food preferences"}
                           id={"plus-one-food-choice"}
                           name={"plusOne.foodChoice"}
-                          value={rsvp.plusOne.foodChoice}
+                          // value={rsvp.plusOne.foodChoice}
                           options={foodOptions}
-                          onChange={handleChange}
+                          onChange={handleNested}
                         />
                       </div>
                     </>

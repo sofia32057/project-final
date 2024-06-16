@@ -92,9 +92,11 @@ export const useStore = create(
             throw new Error("Error fetching data: ", error);
           }
         }),
+
       // Fetch data for logged in user
       setGuestData: () =>
         set(async (state) => {
+          console.log("fetch running");
           try {
             const response = await fetch(`${API_URL}/guests/${state.guestId}`, {
               method: "GET",
@@ -108,6 +110,7 @@ export const useStore = create(
               throw new Error("Error fetching data");
             }
             const data = await response.json();
+            console.log("fetch data", data);
             set(() => ({
               guestData: data,
             }));

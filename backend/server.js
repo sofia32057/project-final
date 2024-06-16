@@ -138,7 +138,7 @@ app
         guest.plusOne.foodChoice = req.body.plusOne.foodChoice;
       }
       if (guest.speech.isAllowed) {
-        guest.willMakeSpeech = req.body.willMakeSpeech;
+        guest.speech.willMakeSpeech = req.body.willMakeSpeech;
       }
 
       guest.save();
