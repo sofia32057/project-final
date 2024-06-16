@@ -1,6 +1,5 @@
 import { Heading } from "../components/Heading";
 import { Image } from "../components/Image";
-import Couple from "../assets/cody-black-VDb0wxbfG6k-unsplash_1920x1263.jpg";
 import { Intro } from "../components/Intro";
 import { Paragraph } from "../components/Paragraph";
 import content from "../data/our-story.json";
@@ -21,7 +20,7 @@ export const CoupleStory = () => {
           </div>
         </div>
         <div className="max-w-full justify-self-center lg:sticky lg:top-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:-ml-12 lg:-mt-12 lg:justify-self-auto lg:overflow-visible lg:p-12">
-          <Image src={Couple} />
+          <Image src={content.image} />
         </div>
         <div className="lg:col-span-2 lg:col-start-1 lg:row-start-2 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
           <div className="lg:pr-4">

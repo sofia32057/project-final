@@ -3,13 +3,13 @@ import React from "react";
 export const Paragraph = ({ content }) => {
   return (
     <>
-      {typeof content == "string" ? (
+      {content === "" || typeof content == "string" ? (
         <p className="text-base mt-8 leading-7 ">{content}</p>
       ) : (
-        content.map((par) => {
+        content.map((p) => {
           return (
-            <p key={par} className="text-base mt-8 leading-7 ">
-              {par}
+            <p key={p} className="text-base mt-8 leading-7 ">
+              {p}
             </p>
           );
         })

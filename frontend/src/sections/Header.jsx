@@ -1,19 +1,30 @@
 import { NavLink, Link, useNavigate } from "react-router-dom";
 import { useStore } from "../../stores/useStore";
 import { useEffect, useState } from "react";
-import { Dialog, DialogPanel } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import { Button } from "../components/Button";
 import { HashLink } from "react-router-hash-link";
+import {
+  Dialog,
+  DialogPanel,
+  Popover,
+  PopoverButton,
+  PopoverGroup,
+  PopoverPanel,
+  Transition,
+} from "@headlessui/react";
 
-const navigation = [
-  // { name: "Info", href: "/" },
-  { name: "Schedule", href: "/#schedule" },
+const hashlinks = [
+  { name: "Schedule", href: "/#schedule", description: "What happens when." },
   { name: "Venue", href: "/#venue" },
   { name: "Accomodations", href: "/#accomodation" },
   { name: "FAQ", href: "/#faq" },
   { name: "Our story", href: "/#story" },
-  // { name: "My Attendance", href: "/my-attendance" },
+  { name: "Our guests", href: "/#guests" },
+];
+const navlinks = [
+  { name: "My Attendance", href: "/my-attendance" },
   { name: "Message board", href: "/messageboard" },
 ];
 
@@ -68,27 +79,63 @@ export const Header = () => {
           {/* Hamburger end */}
 
           {/* Desktop menu start */}
-          <div className="hidden items-center justify-end lg:flex lg:flex-1 lg:gap-x-6">
+          <div className="hidden items-center justify-end text-nowrap lg:flex lg:flex-1 lg:gap-x-6">
+            {/* Drop down menu starts */}
+            <PopoverGroup className="hidden lg:flex lg:gap-x-12">
+              <Popover className="relative">
+                <PopoverButton className="flex items-center gap-x-1 text-sm font-semibold leading-6">
+                  Wedding info
+                  <ChevronDownIcon
+                    className="h-5 w-5 flex-none text-primary"
+                    aria-hidden="true"
+                  />
+                </PopoverButton>
+                <Transition
+                  enter="transition ease-out duration-200"
+                  enterFrom="opacity-0 translate-y-1"
+                  enterTo="opacity-100 translate-y-0"
+                  leave="transition ease-in duration-150"
+                  leaveFrom="opacity-100 translate-y-0"
+                  leaveTo="opacity-0 translate-y-1"
+                >
+                  <PopoverPanel className="absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-primary/10">
+                    <div className="p-4">
+                      {hashlinks.map((item) => (
+                        <div
+                          key={item.name}
+                          className="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-accent/15"
+                        >
+                          <div className="flex-auto">
+                            <HashLink
+                              key={item.name}
+                              to={item.href}
+                              className="text-nowrap text-sm font-bold leading-6 text-primary hover:text-secondary active:text-secondary"
+                            >
+                              {item.name}
+                            </HashLink>
+                            <p className="mt-1 text-primary/80">
+                              {item.description}
+                            </p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </PopoverPanel>
+                </Transition>
+              </Popover>
+            </PopoverGroup>
+            {/* Drop down menu ends */}
+
             {isLoggedIn &&
-              navigation.map((item) =>
-                item.href.includes("#") ? (
-                  <HashLink
-                    key={item.name}
-                    to={item.href}
-                    className="text-nowrap text-sm font-semibold leading-6 text-primary hover:text-secondary active:text-secondary"
-                  >
-                    {item.name}
-                  </HashLink>
-                ) : (
-                  <NavLink
-                    key={item.name}
-                    to={item.href}
-                    className="text-nowrap text-sm font-semibold leading-6 text-primary active:text-secondary"
-                  >
-                    {item.name}
-                  </NavLink>
-                ),
-              )}
+              navlinks.map((item) => (
+                <HashLink
+                  key={item.name}
+                  to={item.href}
+                  className="text-nowrap text-sm font-semibold leading-6 text-primary hover:text-secondary active:text-secondary"
+                >
+                  {item.name}
+                </HashLink>
+              ))}
             {isLoggedIn && (
               <Button
                 label={"RSVP"}
@@ -131,7 +178,7 @@ export const Header = () => {
           onClose={setMobileMenuOpen}
         >
           <div className="fixed inset-0 z-50" />
-          <DialogPanel className="sm:ring-gray-900/10 fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-[#ffffff] px-6 py-6 sm:max-w-sm sm:ring-1">
+          <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 shadow-lg sm:max-w-sm sm:ring-1 sm:ring-primary/10">
             <div className="flex items-center justify-between">
               <Link
                 href="/"
@@ -143,7 +190,7 @@ export const Header = () => {
               </Link>
               <button
                 type="button"
-                className="text-gray-700 -m-2.5 rounded-md p-2.5"
+                className="-m-2.5 rounded-md p-2.5"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 <span className="sr-only">Close menu</span>
@@ -151,38 +198,42 @@ export const Header = () => {
               </button>
             </div>
             <div className="mt-6 flow-root">
-              <div className="divide-gray-500/10 -my-6 divide-y">
+              <div className="-my-6 divide-y divide-secondary">
                 {isLoggedIn && (
                   <div className="space-y-2 py-6">
-                    <Button
-                      label={"RSVP"}
-                      type={"link"}
-                      style={"primary"}
-                      href={"/rsvp"}
-                      handler={() => setMobileMenuOpen(false)}
-                    />
-
-                    {navigation.map((item) =>
-                      item.href.includes("#") ? (
+                    <div className="py-6">
+                      <Button
+                        label={"RSVP"}
+                        type={"link"}
+                        style={"primary"}
+                        href={"/rsvp"}
+                        handler={() => setMobileMenuOpen(false)}
+                      />
+                    </div>
+                    <div className="py-2 font-cormorant text-primary">
+                      {hashlinks.map((item) => (
                         <HashLink
                           key={item.name}
                           to={item.href}
-                          className="text-base text-gray-900 hover:bg-gray-50 -mx-3 block rounded-lg px-3 py-2 font-semibold leading-7"
+                          className="text-base -mx-3 block rounded-lg px-3 py-2 font-semibold leading-7 hover:bg-accent/15"
                           onClick={() => setMobileMenuOpen(false)}
                         >
                           {item.name}
                         </HashLink>
-                      ) : (
+                      ))}
+                    </div>
+                    <div className="py-2 font-cormorant text-primary">
+                      {navlinks.map((item) => (
                         <NavLink
                           key={item.name}
                           to={item.href}
-                          className="text-base text-gray-900 hover:bg-gray-50 -mx-3 block rounded-lg px-3 py-2 font-semibold leading-7"
+                          className="text-base -mx-3 block rounded-lg px-3 py-2 font-semibold leading-7 hover:bg-accent/15"
                           onClick={() => setMobileMenuOpen(false)}
                         >
                           {item.name}
                         </NavLink>
-                      ),
-                    )}
+                      ))}
+                    </div>
                   </div>
                 )}
                 <div className="py-6">

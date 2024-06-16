@@ -11,7 +11,7 @@ export const Button = ({ label, type, style, href, handler }) => {
 
   return (
     <>
-      <div className="flex flex-1">
+      <div className="flex">
         {type === "button" ? (
           <button className={styling[style]} onClick={handler}>
             {label}{" "}

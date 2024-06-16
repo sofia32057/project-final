@@ -8,11 +8,12 @@ import { WeddingParty } from "../sections/WeddingParty";
 import { Faq } from "../sections/Faq";
 import { Accommodation } from "../sections/Accommodation";
 import { GuestList } from "../sections/GuestList";
+import content from "../data/homepage.json";
 
 export const Homepage = () => {
   return (
     <>
-      <HeroSection />
+      <HeroSection content={content.hero} />
       {/* <FishtankSection /> */}
       <Schedule />
       <VenueSection />

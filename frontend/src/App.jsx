@@ -4,6 +4,7 @@ import { NotFound } from "./status/NotFound";
 import { Confirmation } from "./status/Confirmation";
 import { lazily } from "react-lazily";
 import { useStore } from "../stores/useStore";
+import { MyAttendance } from "./pages/MyAttendance";
 
 const { Homepage } = lazily(() => import("./pages/Homepage"));
 const { LandingPage } = lazily(() => import("./pages/LandingPage"));
@@ -38,10 +39,10 @@ export const App = () => {
           path: "/confirmation",
           element: <Confirmation />,
         },
-        // {
-        //   path: "/my-attendance/:guestId",
-        //   element: <NotFound />,
-        // },
+        {
+          path: "/my-attendance",
+          element: <MyAttendance />,
+        },
         {
           path: "/messageboard",
           element: <Messageboard />,

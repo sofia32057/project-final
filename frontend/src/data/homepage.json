@@ -1,0 +1,10 @@
+{
+  "hero": {
+    "h1": "Sarah & Michael",
+    "pre": "We're getting married!",
+    "intro": "Dear Family and Friends, We are overjoyed to share this special moment with you.",
+    "paragraph": "Your love and support mean the world to us, and we are incredibly grateful to have you in our lives. We look forward to creating beautiful memories together on our wedding day. With love, Sarah and Michael",
+    "cta": {"label":"RSVP",     "type":"link",     "style":"primary",    "href":"/rsvp", "onclick":""},
+    "image": "/jeremy-wong-weddings-K41SGnGKxVk-unsplash_1920x1280.jpg"
+  }
+}

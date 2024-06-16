@@ -1,0 +1,22 @@
+{
+  "hero": {
+    "h1": "My attendance",
+    "pre": "Your private space",
+    "intro": "Forgot what you choice for food or who to bring as your plus one? We've got you.",
+    "paragraph": "This is your page. Here you'll find your RSVP and maybe other info that's only for you. Let us know if anything is missing. Haven't RSVP'd yet? Please, do so.",
+    "image": "/cody-black-VDb0wxbfG6k-unsplash_1920x1263.jpg",
+    "cta": {
+      "label": "RSVP",
+      "type": "link",
+      "style": "primary",
+      "href": "/rsvp",
+      "onclick": ""
+    }
+  },
+  "body": {
+    "heading": "My information",
+    "intro": "This is the information we have about you. Do you want to tell us something new?",
+    "body": "",
+    "image": ""
+  }
+}
