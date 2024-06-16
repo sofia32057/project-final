@@ -33,7 +33,7 @@ export const HeroSection = () => {
               label={"RSVP"}
               type={"link"}
               style={"primary"}
-              action={"/rsvp"}
+              href={"/rsvp"}
             />
           </div>
         </div>

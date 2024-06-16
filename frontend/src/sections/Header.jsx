@@ -47,6 +47,7 @@ export const Header = () => {
             <Link
               href="/"
               className="text-base -m-1.5 p-1.5 font-semibold leading-7 text-primary hover:text-secondary hover:no-underline md:text-lg"
+              onClick={() => setMobileMenuOpen(false)}
             >
               <span className="sr-only">Project wedding site</span>
               Sarah & Michael's wedding
@@ -134,6 +135,7 @@ export const Header = () => {
             <div className="flex items-center justify-between">
               <Link
                 href="/"
+                onClick={() => setMobileMenuOpen(false)}
                 className="text-base -m-1.5 p-1.5 font-cormorant font-semibold leading-7 text-primary md:text-lg"
               >
                 <span className="sr-only">Project wedding site</span>

@@ -56,10 +56,6 @@ export const RsvpForm = () => {
   }, []);
 
   useEffect(() => {
-    console.log(rsvp);
-  }, [rsvp]);
-
-  useEffect(() => {
     console.log(guestData);
   }, [setGuestData]);
 

@@ -3,12 +3,14 @@ import { useStore } from "../../stores/useStore";
 import { Heading } from "../components/Heading";
 import { Intro } from "../components/Intro";
 import { List } from "../components/List";
+import { Button } from "../components/Button";
+import { Paragraph } from "../components/Paragraph";
 
 export const GuestList = () => {
   const attendingGuests = useStore((state) => state.attendingGuests);
   const setAttendingGuests = useStore((state) => state.setAttendingGuests);
 
-  useEffect(() => setAttendingGuests, []);
+  useEffect(() => setAttendingGuests(), []);
 
   return (
     <section
@@ -27,6 +29,19 @@ export const GuestList = () => {
               />
               <Intro
                 content={"This will be a wonderful day - and crazy night!"}
+              />
+            </div>
+            <Paragraph
+              content={
+                "We have invited some of the best peope we know and we are sure you will have the best time together. Make sure to join the party by RSVP-ing!"
+              }
+            />
+            <div className="mt-10 flex items-center  gap-x-6">
+              <Button
+                label={"RSVP"}
+                type={"link"}
+                style={"primary"}
+                href={"/rsvp"}
               />
             </div>
           </div>{" "}
