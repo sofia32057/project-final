@@ -110,10 +110,9 @@ export const useStore = create(
               throw new Error("Error fetching data");
             }
             const data = await response.json();
-            console.log("fetch data", data);
-            set(() => ({
-              guestData: data,
-            }));
+            set({
+              guestData: await data,
+            });
           } catch (error) {
             throw new Error("Error fetching data: ", error);
           }

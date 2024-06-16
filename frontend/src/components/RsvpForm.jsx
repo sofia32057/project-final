@@ -6,11 +6,13 @@ import { Input } from "./Input";
 import { useNavigate } from "react-router-dom";
 
 export const RsvpForm = () => {
-  const { setGuestData } = useStore();
-  // const setGuestData = useStore((state) => state.setGuestData);
-  const guestData = useStore((state) => state.guestdata);
+  // const { setGuestData } = useStore();
+  const setGuestData = useStore((state) => state.setGuestData);
+  const { guestData } = useStore();
   const updateGuest = useStore((state) => state.updateGuest);
   const [plusOne, setPlusOne] = useState(false);
+
+  // General RSVP schema
   const [rsvp, setRsvp] = useState({
     speech: {
       willMakeSpeech: false,
@@ -22,6 +24,7 @@ export const RsvpForm = () => {
       foodChoice: "--",
     },
   });
+
   const foodOptions = ["Select", "Meat", "Fish", "Vegan"];
   const nav = useNavigate();
 
@@ -52,12 +55,14 @@ export const RsvpForm = () => {
   };
 
   useEffect(() => {
-    setGuestData;
+    setGuestData();
+    console.log("Guest data set");
   }, []);
 
   useEffect(() => {
-    console.log(guestData);
-  }, [setGuestData]);
+    console.log("Guest data", guestData);
+    // setRsvp(guestData);
+  }, [guestData]);
 
   return (
     <form onSubmit={handleSubmit}>
@@ -90,7 +95,7 @@ export const RsvpForm = () => {
 
                 {rsvp.willAttend === "true" && (
                   <>
-                    {
+                    {guestData.speech.isAllowed && (
                       <Input
                         label={"I want to make a speech"}
                         id={"speech"}
@@ -100,7 +105,7 @@ export const RsvpForm = () => {
                         onChange={handleNested}
                         p={"All guest speeches are limited to 5 min each."}
                       />
-                    }
+                    )}
 
                     <div className="relative gap-x-3">
                       <div className="sm:col-span-3">
@@ -121,7 +126,7 @@ export const RsvpForm = () => {
           </div>
 
           {/* PLUS ONE */}
-          {rsvp.willAttend === "true" && (
+          {rsvp.willAttend === "true" && guestData.plusOne.isAllowed && (
             <div className="mt-10 space-y-10">
               <fieldset id="attending" className="border-gray-300">
                 <legend className="text-base text-gray-900 font-semibold leading-7">
