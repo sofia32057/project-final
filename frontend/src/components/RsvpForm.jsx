@@ -61,7 +61,7 @@ export const RsvpForm = () => {
 
   useEffect(() => {
     console.log("Guest data", guestData);
-    // setRsvp(guestData);
+    setRsvp(guestData);
   }, [guestData]);
 
   return (
@@ -101,6 +101,7 @@ export const RsvpForm = () => {
                         id={"speech"}
                         name={"speech.willMakeSpeech"}
                         value={rsvp.speech.willMakeSpeech}
+                        checked={rsvp.speech.willMakeSpeech}
                         type={"checkbox"}
                         onChange={handleNested}
                         p={"All guest speeches are limited to 5 min each."}
@@ -142,6 +143,7 @@ export const RsvpForm = () => {
                     id={"plus-one"}
                     name={"plus-one"}
                     value={plusOne}
+                    checked={plusOne}
                     type={"checkbox"}
                     onChange={() => setPlusOne(!plusOne)}
                   />

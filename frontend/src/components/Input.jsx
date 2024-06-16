@@ -1,28 +1,27 @@
-export const Input = ({ label, id, name, value, type, onChange, p }) => {
+export const Input = ({
+  label,
+  id,
+  name,
+  value,
+  type,
+  onChange,
+  p,
+  checked,
+}) => {
   return (
     <>
       {type == "checkbox" || type == "radio" ? (
         <div className="relative flex gap-x-3">
           <div className="flex h-6 items-center">
-            {type === "checkbox" ? (
-              <input
-                id={id}
-                name={name}
-                checked={value}
-                type={type}
-                className="border-gray-300 text-indigo-600 focus:ring-indigo-600 h-4 w-4 rounded"
-                onChange={onChange}
-              />
-            ) : (
-              <input
-                id={id}
-                name={name}
-                value={value}
-                type={type}
-                className="border-gray-300 text-indigo-600 focus:ring-indigo-600 h-4 w-4 rounded"
-                onChange={onChange}
-              />
-            )}
+            <input
+              id={id}
+              name={name}
+              value={value}
+              checked={checked}
+              type={type}
+              className="border-gray-300 text-indigo-600 focus:ring-indigo-600 h-4 w-4 rounded"
+              onChange={onChange}
+            />
           </div>
           <div className="text-sm leading-6">
             <label htmlFor={id} className="text-gray-900 font-medium">
