@@ -4,10 +4,10 @@ export const List = ({ items }) => {
   return (
     <ul
       role="list"
-      className="col-span-2 grid w-full gap-x-8 gap-y-12 sm:gap-y-16 md:grid-cols-2"
+      className="col-span-2 grid w-full gap-x-6 gap-y-8 sm:gap-y-12 md:grid-cols-2"
     >
       {items.map((item) => (
-        <GuestItem person={item} />
+        <GuestItem key={item.firstname} person={item} />
       ))}
     </ul>
   );
