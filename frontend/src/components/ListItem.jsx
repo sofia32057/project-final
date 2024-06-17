@@ -14,12 +14,17 @@ export const GuestItem = ({ person }) => {
           <Icon activity={"User"} />
         )}
         <div className="flex-1">
-          <h3 className="text-base text-gray-900 font-semibold leading-7 tracking-tight">
-            {person.firstname} {person.lastname}
-          </h3>
-          <p className="text-indigo-600 text-sm font-semibold leading-6">
+          <hp className="text-base font-cormorant font-semibold leading-7 tracking-tight">
             {person.relation}
+          </hp>
+          <p className="text-sm font-semibold leading-6 text-primary">
+            {person.firstname} {person.lastname}
           </p>
+          {person.plusOne.name && (
+            <p className="text-sm font-light leading-7 tracking-tight text-text/75">
+              {`will also bring ${person.plusOne.name}`}
+            </p>
+          )}
         </div>
       </div>
     </li>
