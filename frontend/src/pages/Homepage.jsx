@@ -9,6 +9,8 @@ import { Faq } from "../sections/Faq";
 import { Accommodation } from "../sections/Accommodation";
 import { GuestList } from "../sections/GuestList";
 import content from "../data/homepage.json";
+import ScrollToTop from "react-scroll-to-top";
+import { ArrowUpIcon } from "@heroicons/react/24/outline";
 
 export const Homepage = () => {
   return (
@@ -23,6 +25,16 @@ export const Homepage = () => {
       {/* <WeddingParty /> */}
       <GuestList />
       <Footer />
+      <ScrollToTop
+        smooth
+        component={<ArrowUpIcon color="white" width={22} />}
+        style={{
+          backgroundColor: "#007678",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      />
     </>
   );
 };
