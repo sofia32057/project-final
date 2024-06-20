@@ -16,7 +16,7 @@ export const Homepage = () => {
   return (
     <>
       <HeroSection content={content.hero} />
-      {/* <FishtankSection /> */}
+      <FishtankSection />
       <Schedule />
       <VenueSection />
       <Accommodation />
