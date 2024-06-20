@@ -13,7 +13,7 @@ export const FishtankSection = () => {
               speed: -15,
               children: (
                 <div className="absolute inset-0 flex items-center justify-center ">
-                  <p className="mx-8 text-center font-cormorant text-xl font-light leading-8 text-white">
+                  <p className="mx-8 text-center font-cormorant text-2xl font-light leading-10 text-white">
                     “Once in a while, right in the middle of an ordinary life,
                     love gives us a fairy tale.”
                   </p>
@@ -21,7 +21,7 @@ export const FishtankSection = () => {
               ),
             },
           ]}
-          className="aspect-[2/1.5]"
+          className="aspect-[2/1.5] xl:rounded-xl"
         />
       </ParallaxProvider>
     </>
