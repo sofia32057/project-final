@@ -3,6 +3,10 @@
 ## Project Description
 
 - What your application does
+  This project is a wedding RSVP website, that gives the couple the opportunity not only to provide all the information about the wedding for their guests, but also mangaging the guest list. The guests have their own profile and can see their RSVP answer, food choice and +1 name.
+
+  The website is build so it can be used as a template. There are reusable components and the content are pulled from JSON files.
+
 - Why you used the technologies you used
 - Some of the challenges you faced and features you hope to implement in the future
 
