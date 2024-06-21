@@ -4,6 +4,7 @@ import { useStore } from "../../stores/useStore";
 import { Heading } from "./Heading";
 import { Button } from "./Button";
 import { Intro } from "./Intro";
+import { Input } from "../components/Input";
 
 export const LoginForm = () => {
   const [userInput, setUserInput] = useState({
@@ -51,14 +52,14 @@ export const LoginForm = () => {
                 Email address
               </label>
               <div className="mt-2">
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  required
-                  autoComplete="email"
-                  className="block w-full rounded-md border-0 py-1.5 text-sm leading-6 text-text shadow-sm ring-1 ring-inset ring-accent placeholder:text-text focus:ring-2 focus:ring-inset focus:ring-secondary"
+                <Input
+                  id={"email"}
+                  name={"email"}
+                  type={"email"}
+                  auto={"email"}
+                  required={true}
                   onChange={handleChange}
+                  placeholder={"Type your email..."}
                 />
               </div>
             </div>
@@ -73,14 +74,14 @@ export const LoginForm = () => {
                 </label>
               </div>
               <div className="mt-2">
-                <input
-                  id="password"
-                  name="password"
-                  type="password"
-                  autoComplete="current-password"
-                  required
-                  className="placeholder:text-gray-400 block w-full rounded-md border-0 py-1.5 text-sm leading-6 text-text shadow-sm ring-1 ring-inset ring-accent focus:ring-2 focus:ring-inset focus:ring-secondary"
+                <Input
+                  id={"password"}
+                  name={"password"}
+                  type={"password"}
+                  auto={"current-password"}
+                  required={true}
                   onChange={handleChange}
+                  placeholder={"The code from the invite..."}
                 />
               </div>
             </div>
@@ -90,11 +91,11 @@ export const LoginForm = () => {
             </div>
           </form>
 
-          <p className="mt-10 text-center text-sm text-text">
+          <p className="mt-10 flex flex-col text-center text-sm text-text">
             Lost your invitation?{" "}
             <a
               href="#"
-              className="hover:text-indigo-500 font-semibold leading-6 text-accent"
+              className="font-semibold leading-6 text-accent hover:text-primary"
             >
               Contact us and we'll send you your login.
             </a>
