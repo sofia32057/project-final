@@ -6,7 +6,6 @@ import { useEffect } from "react";
 
 export const Confirmation = () => {
   const { guestData, setGuestData } = useStore();
-  console.log(guestData);
 
   useEffect(() => {
     setGuestData();
