@@ -7,7 +7,7 @@ const API_URL = "https://project-final-gvph.onrender.com";
 export const useStore = create(
   persist(
     (set, get) => ({
-      guestData: {}, // Data from API
+      guestData: {},
       loading: true,
       token: "",
       isLoggedIn: false,

@@ -6,7 +6,6 @@ import { Input } from "./Input";
 import { useNavigate } from "react-router-dom";
 
 export const RsvpForm = () => {
-  // const { setGuestData } = useStore();
   const setGuestData = useStore((state) => state.setGuestData);
   const { guestData } = useStore();
   const updateGuest = useStore((state) => state.updateGuest);
@@ -56,11 +55,9 @@ export const RsvpForm = () => {
 
   useEffect(() => {
     setGuestData();
-    console.log("Guest data set");
   }, []);
 
   useEffect(() => {
-    console.log("Guest data", guestData);
     setRsvp(guestData);
   }, [guestData]);
 
