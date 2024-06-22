@@ -1,6 +1,8 @@
 # Backend part of Final Project
 
-This project includes the packages and babel setup for an express server, and is just meant to make things a little simpler to get up and running with.
+This is the backend for our Wedding site.
+We are using Express.js and Mongoose with a MongoDB.
+Bcrypt is used for auth and dotenv for acessing the env file.
 
 ## Getting Started
 
@@ -16,9 +18,15 @@ Se all REST API endpoints
 ### /login
 
 Login to app by using email and password.
-Test user: test@example.com | testPassword
+The password from the req is compared to the pre set invitation code set in the env.
+
+### /auth
+
+Runs authentication (middleware) by access token in DB and returns message if OK.
 
 ### /guests
+
+Requires Authorization by accesstoken to run (middleware)
 
 - .get: get all guests
 - .post: post new guest
@@ -30,7 +38,7 @@ Test user: test@example.com | testPassword
     "firstname": "Judy",
     "lastname": "Dench",
     "email": "judy@worddomination.io",
-    "password": "test",
+    "password": "",
     "plusOne": {
       "isAllowed": true,
       "name": "Emma Thompson",
@@ -47,6 +55,8 @@ Test user: test@example.com | testPassword
 ```
 
 ### /guests/:guestId
+
+Requires Authorization by accesstoken to run (middleware)
 
 - .get: get guest by id
 - .patch: update guest, primarily for RSVP
