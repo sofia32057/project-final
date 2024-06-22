@@ -17,11 +17,15 @@ import {
 
 const hashlinks = [
   { name: "Schedule", href: "/#schedule", description: "What happens when." },
-  { name: "Venue", href: "/#venue" },
-  { name: "Accomodations", href: "/#accomodation" },
-  { name: "FAQ", href: "/#faq" },
-  { name: "Our story", href: "/#story" },
-  { name: "Our guests", href: "/#guests" },
+  { name: "Venue", href: "/#venue", description: "How to get there." },
+  {
+    name: "Accomodations",
+    href: "/#accomodation",
+    description: "Where to stay.",
+  },
+  { name: "FAQ", href: "/#faq", description: "All  the info." },
+  { name: "Our story", href: "/#story", description: "Cheezy love stuff." },
+  { name: "Our guests", href: "/#guests", description: "Who is coming?" },
 ];
 const navlinks = [
   { name: "My Attendance", href: "/my-attendance" },
@@ -81,49 +85,51 @@ export const Header = () => {
           {/* Desktop menu start */}
           <div className="hidden items-center justify-end text-nowrap lg:flex lg:flex-1 lg:gap-x-6">
             {/* Drop down menu starts */}
-            <PopoverGroup className="hidden lg:flex lg:gap-x-12">
-              <Popover className="relative">
-                <PopoverButton className="flex items-center gap-x-1 text-sm font-semibold leading-6">
-                  Wedding info
-                  <ChevronDownIcon
-                    className="h-5 w-5 flex-none text-primary"
-                    aria-hidden="true"
-                  />
-                </PopoverButton>
-                <Transition
-                  enter="transition ease-out duration-200"
-                  enterFrom="opacity-0 translate-y-1"
-                  enterTo="opacity-100 translate-y-0"
-                  leave="transition ease-in duration-150"
-                  leaveFrom="opacity-100 translate-y-0"
-                  leaveTo="opacity-0 translate-y-1"
-                >
-                  <PopoverPanel className="absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-primary/10">
-                    <div className="p-4">
-                      {hashlinks.map((item) => (
-                        <div
-                          key={item.name}
-                          className="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-accent/15"
-                        >
-                          <div className="flex-auto">
-                            <HashLink
-                              key={item.name}
-                              to={item.href}
-                              className="text-nowrap text-sm font-bold leading-6 text-primary hover:text-secondary active:text-secondary"
-                            >
-                              {item.name}
-                            </HashLink>
-                            <p className="mt-1 text-primary/80">
-                              {item.description}
-                            </p>
+            {isLoggedIn && (
+              <PopoverGroup className="hidden lg:flex lg:gap-x-12">
+                <Popover className="relative">
+                  <PopoverButton className="flex items-center gap-x-1 text-sm font-semibold leading-6">
+                    Wedding info
+                    <ChevronDownIcon
+                      className="h-5 w-5 flex-none text-primary"
+                      aria-hidden="true"
+                    />
+                  </PopoverButton>
+                  <Transition
+                    enter="transition ease-out duration-200"
+                    enterFrom="opacity-0 translate-y-1"
+                    enterTo="opacity-100 translate-y-0"
+                    leave="transition ease-in duration-150"
+                    leaveFrom="opacity-100 translate-y-0"
+                    leaveTo="opacity-0 translate-y-1"
+                  >
+                    <PopoverPanel className="absolute -left-8 top-full z-10 mt-3 w-screen max-w-sm overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-primary/10">
+                      <div className="p-4">
+                        {hashlinks.map((item) => (
+                          <div
+                            key={item.name}
+                            className="group relative flex items-center gap-x-6 rounded-lg p-3 text-sm leading-6 hover:bg-accent/15"
+                          >
+                            <div className="flex-auto">
+                              <HashLink
+                                key={item.name}
+                                to={item.href}
+                                className="text-nowrap text-sm font-bold leading-6 text-primary hover:text-secondary active:text-secondary"
+                              >
+                                {item.name}
+                              </HashLink>
+                              <p className="mt-1 text-primary/80">
+                                {item.description}
+                              </p>
+                            </div>
                           </div>
-                        </div>
-                      ))}
-                    </div>
-                  </PopoverPanel>
-                </Transition>
-              </Popover>
-            </PopoverGroup>
+                        ))}
+                      </div>
+                    </PopoverPanel>
+                  </Transition>
+                </Popover>
+              </PopoverGroup>
+            )}
             {/* Drop down menu ends */}
 
             {isLoggedIn &&
