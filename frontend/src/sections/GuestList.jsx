@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useStore } from "../../stores/useStore";
+import { useStore } from "../stores/useStore";
 import { Heading } from "../components/Heading";
 import { Intro } from "../components/Intro";
 import { List } from "../components/List";

@@ -1,4 +1,4 @@
-import { useStore } from "../../stores/useStore";
+import { useStore } from "../stores/useStore";
 import { Heading } from "../components/Heading";
 import { Button } from "../components/Button";
 import { Paragraph } from "../components/Paragraph";

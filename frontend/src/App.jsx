@@ -3,7 +3,7 @@ import { Root } from "./Root";
 import { NotFound } from "./status/NotFound";
 import { Confirmation } from "./status/Confirmation";
 import { lazily } from "react-lazily";
-import { useStore } from "../stores/useStore";
+import { useStore } from "./stores/useStore";
 import { MyAttendance } from "./pages/MyAttendance";
 
 const { Homepage } = lazily(() => import("./pages/Homepage"));

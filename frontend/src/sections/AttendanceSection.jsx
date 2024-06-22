@@ -1,7 +1,7 @@
 import { Heading } from "../components/Heading";
 import { Intro } from "../components/Intro";
 import { Paragraph } from "../components/Paragraph";
-import { useStore } from "../../stores/useStore";
+import { useStore } from "../stores/useStore";
 import { useEffect } from "react";
 import { AttendanceItem } from "../components/AttendanceItem";
 

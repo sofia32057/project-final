@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useStore } from "../../stores/useStore";
+import { useStore } from "../stores/useStore";
 import { Button } from "./Button";
 import { Select } from "./Select";
 import { Input } from "./Input";

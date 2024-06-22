@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useStore } from "../../stores/useStore";
+import { useStore } from "../stores/useStore";
 import { Heading } from "./Heading";
 import { Button } from "./Button";
 import { Intro } from "./Intro";

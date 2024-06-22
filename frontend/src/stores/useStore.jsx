@@ -78,7 +78,6 @@ export const useStore = create(
               },
             });
             if (!response.ok) {
-              console.log(response);
               throw new Error("Error fetching data");
             }
             const data = await response.json();
@@ -96,7 +95,6 @@ export const useStore = create(
       // Fetch data for logged in user
       setGuestData: () =>
         set(async (state) => {
-          console.log("fetch running");
           try {
             const response = await fetch(`${API_URL}/guests/${state.guestId}`, {
               method: "GET",
@@ -106,7 +104,6 @@ export const useStore = create(
               },
             });
             if (!response.ok) {
-              console.log(response);
               throw new Error("Error fetching data");
             }
             const data = await response.json();
@@ -136,7 +133,6 @@ export const useStore = create(
               if (callback) {
                 callback();
               }
-              console.log("Patched data");
             }
           } catch (err) {
             throw new Error("Error", err.errors);
